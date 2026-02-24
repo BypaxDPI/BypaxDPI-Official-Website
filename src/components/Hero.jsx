@@ -4,6 +4,8 @@ import useGitHubReleases from '../hooks/useGitHubReleases';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { FiZap, FiRadio, FiMousePointer } from 'react-icons/fi';
+import { FaCircle } from 'react-icons/fa';
 
 const StatCounter = ({ target, suffix = '', label }) => {
     const [count, setCount] = useState(0);
@@ -289,14 +291,14 @@ const Hero = () => {
 
                         <div className="app-stats">
                             <div className="app-stat">
-                                <span className="app-stat-icon">⚡</span>
+                                <span className="app-stat-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FiZap size={16} /></span>
                                 <div className="app-stat-info">
                                     <span className="app-stat-value">1ms</span>
                                     <span className="app-stat-label">Ping</span>
                                 </div>
                             </div>
                             <div className="app-stat">
-                                <span className="app-stat-icon">📡</span>
+                                <span className="app-stat-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FiRadio size={16} /></span>
                                 <div className="app-stat-info">
                                     <span className="app-stat-value">Active</span>
                                     <span className="app-stat-label">Proxy</span>
@@ -315,7 +317,7 @@ const Hero = () => {
                     animate={{ y: [0, -12, 0], rotate: [0, 2, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                    <span className="float-icon">⚡</span>
+                    <span className="float-icon" style={{ display: 'flex' }}><FiZap size={20} /></span>
                     <span>{t('hero.float1')}</span>
                 </motion.div>
                 <motion.div 
@@ -323,7 +325,7 @@ const Hero = () => {
                     animate={{ y: [0, -8, 0], rotate: [0, -1, 0] }}
                     transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 >
-                    <span className="float-icon">🟢</span>
+                    <span className="float-icon" style={{ display: 'flex' }}><FaCircle color="#4ade80" size={12} /></span>
                     <span style={{ color: 'var(--color-accent)' }}>{t('hero.float2')}</span>
                 </motion.div>
                 <motion.div 
@@ -331,7 +333,7 @@ const Hero = () => {
                     animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
                     transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
                 >
-                    <span className="float-icon">🖱️</span>
+                    <span className="float-icon" style={{ display: 'flex' }}><FiMousePointer size={18} /></span>
                     <span>{t('hero.float3')}</span>
                 </motion.div>
             </div>

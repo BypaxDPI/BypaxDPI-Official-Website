@@ -506,6 +506,7 @@ img { max-width: 100%; height: auto; }
 .platform-tab svg { width: 18px; height: 18px; }
 .platform-tab:hover { color: var(--text-primary); }
 .platform-tab.active { background: var(--gradient-primary); color: white; box-shadow: 0 0 24px rgba(59,164,255,0.25); }
+.platform-tab.tab-macos.active { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); box-shadow: 0 0 24px rgba(139,92,246,0.3); }
 .platform-content { max-width: 900px; margin: 0 auto; }
 .platform-main-card { padding: 0 !important; }
 .platform-card-inner { display: flex; gap: 40px; padding: 40px; align-items: flex-start; }

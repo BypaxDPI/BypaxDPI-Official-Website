@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { FiCoffee, FiGlobe } from 'react-icons/fi';
 
 /* ─── SVG Icon Components ─── */
 const FeaturesIcon = () => (
@@ -141,7 +142,7 @@ const Navbar = () => {
 
         <div className="nav-actions">
           <a href="https://www.patreon.com/join/ConsolAktif" target="_blank" rel="noopener noreferrer" className="nav-donate">
-            <span className="donate-icon">☕</span>
+            <span className="donate-icon" style={{display: 'flex'}}><FiCoffee size={18} /></span>
             <span className="donate-text">{t('nav.donate')}</span>
             <span className="donate-pulse"></span>
           </a>
@@ -150,10 +151,10 @@ const Navbar = () => {
             {t('nav.getBypaxDPI')}
           </Link>
           <button className="lang-switcher" id="langSwitcher" onClick={toggleLanguage} aria-label="Switch Language">
-            <span className="lang-icon">🌐</span>
+            <span className="lang-icon" style={{display: 'flex'}}><FiGlobe size={18} /></span>
             <span className="lang-text" id="currentLang">{currentLang.toUpperCase()}</span>
           </button>
-          <a href="https://github.com/bypaxdpi-app" target="_blank" rel="noopener noreferrer" className="nav-github" aria-label="GitHub">
+          <a href="https://github.com/BypaxDPI" target="_blank" rel="noopener noreferrer" className="nav-github" aria-label="GitHub">
             <GitHubIcon />
           </a>
         </div>

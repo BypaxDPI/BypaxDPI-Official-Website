@@ -3,15 +3,18 @@ import ReactDOM from 'react-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import useScrollAnimation from '../hooks/useScrollAnimation';
+import { FaDiscord, FaSteam, FaSpotify, FaYoutube, FaTwitch } from 'react-icons/fa';
+import { SiRoblox } from 'react-icons/si';
+import { FiMonitor, FiGlobe, FiZap } from 'react-icons/fi';
 
 /* ─── Uygulama chip listesi (uygulama isimleri evrensel) ─── */
 const apps = [
-    { name: 'Discord',  icon: '💬', color: '#5865F2' },
-    { name: 'Roblox',   icon: '🎮', color: '#e40000' },
-    { name: 'Steam',    icon: '🎯', color: '#66c0f4' },
-    { name: 'Spotify',  icon: '🎵', color: '#1DB954' },
-    { name: 'YouTube',  icon: '▶️', color: '#FF0000' },
-    { name: 'Twitch',   icon: '📺', color: '#9146FF' },
+    { name: 'Discord',  icon: <FaDiscord size={20} color="#5865F2" />, color: '#5865F2' },
+    { name: 'Roblox',   icon: <SiRoblox size={20} color="#e40000" />, color: '#e40000' },
+    { name: 'Steam',    icon: <FaSteam size={20} color="#66c0f4" />, color: '#66c0f4' },
+    { name: 'Spotify',  icon: <FaSpotify size={20} color="#1DB954" />, color: '#1DB954' },
+    { name: 'YouTube',  icon: <FaYoutube size={20} color="#FF0000" />, color: '#FF0000' },
+    { name: 'Twitch',   icon: <FaTwitch size={20} color="#9146FF" />, color: '#9146FF' },
 ];
 
 /* ─── 4 Video kanıt kartı title/desc t() ile gelir ─── */
@@ -19,7 +22,7 @@ const getProofCards = (t) => [
     {
         id: 'ui',
         num: '01',
-        icon: '🖥️',
+        icon: <FiMonitor size={24} />,
         accentColor: '#818cf8',
         bgColor: 'rgba(129,140,248,0.04)',
         borderColor: 'rgba(129,140,248,0.15)',
@@ -36,7 +39,7 @@ const getProofCards = (t) => [
     {
         id: 'sites',
         num: '02',
-        icon: '🌍',
+        icon: <FiGlobe size={24} />,
         accentColor: '#60a5fa',
         bgColor: 'rgba(96,165,250,0.04)',
         borderColor: 'rgba(96,165,250,0.15)',
@@ -48,7 +51,7 @@ const getProofCards = (t) => [
     {
         id: 'discord',
         num: '03',
-        icon: '💬',
+        icon: <FaDiscord size={24} />,
         accentColor: '#5865F2',
         bgColor: 'rgba(88,101,242,0.04)',
         borderColor: 'rgba(88,101,242,0.15)',
@@ -63,7 +66,7 @@ const getProofCards = (t) => [
     {
         id: 'speedtest',
         num: '04',
-        icon: '⚡',
+        icon: <FiZap size={24} />,
         accentColor: '#4ade80',
         bgColor: 'rgba(74,222,128,0.04)',
         borderColor: 'rgba(74,222,128,0.15)',
@@ -209,13 +212,13 @@ const DiscordBeforeAfter = ({ card, t }) => {
                     className={`discord-tab ${active === 'before' ? 'discord-tab--active discord-tab--bad' : ''}`}
                     onClick={() => setActive('before')}
                 >
-                    <span>🔴</span>{t('proof.discordBefore')}
+                    <span style={{display: 'inline-flex', width: 10, height: 10, borderRadius: '50%', background: '#ef4444', marginRight: 6}}></span>{t('proof.discordBefore')}
                 </button>
                 <button
                     className={`discord-tab ${active === 'after' ? 'discord-tab--active discord-tab--good' : ''}`}
                     onClick={() => setActive('after')}
                 >
-                    <span>🟢</span>{t('proof.discordAfter')}
+                    <span style={{display: 'inline-flex', width: 10, height: 10, borderRadius: '50%', background: '#4ade80', marginRight: 6}}></span>{t('proof.discordAfter')}
                 </button>
             </div>
 

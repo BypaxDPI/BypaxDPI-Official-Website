@@ -2,6 +2,8 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import { motion } from 'framer-motion';
+import { FaPlaystation, FaXbox, FaAndroid } from 'react-icons/fa';
+import { FiTv } from 'react-icons/fi';
 
 const LocalShare = () => {
     const { t } = useLanguage();
@@ -77,28 +79,36 @@ const LocalShare = () => {
                             animate={{ y: [0, -8, 0] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         >
-                            <div className="device-icon" title="PlayStation">🎮</div>
+                            <div className="device-icon" title="PlayStation">
+                                <FaPlaystation size={24} color="#006FCD" />
+                            </div>
                             <div className="device-line"></div>
                         </motion.div>
                         <motion.div className="network-device device-2"
                             animate={{ y: [0, -6, 0] }}
                             transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                         >
-                            <div className="device-icon" title="Xbox">🕹️</div>
+                            <div className="device-icon" title="Xbox">
+                                <FaXbox size={24} color="#107c10" />
+                            </div>
                             <div className="device-line"></div>
                         </motion.div>
                         <motion.div className="network-device device-3"
                             animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                         >
-                            <div className="device-icon" title="Smart TV">📺</div>
+                            <div className="device-icon" title="Smart TV">
+                                <FiTv size={24} color="#94a3b8" />
+                            </div>
                             <div className="device-line"></div>
                         </motion.div>
                         <motion.div className="network-device device-4"
                             animate={{ y: [0, -7, 0] }}
                             transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
                         >
-                            <div className="device-icon" title="Mobile">📱</div>
+                            <div className="device-icon" title="Mobile">
+                                <FaAndroid size={24} color="#3ddc84" />
+                            </div>
                             <div className="device-line"></div>
                         </motion.div>
                     </div>

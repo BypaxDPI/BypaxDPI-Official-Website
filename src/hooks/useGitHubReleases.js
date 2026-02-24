@@ -4,22 +4,22 @@ import { useLanguage } from '../context/LanguageContext';
 const useGitHubReleases = () => {
     const { setVersion, setOS } = useLanguage();
     const [downloadLinks, setDownloadLinks] = useState({
-        mac: 'https://github.com/bypaxdpi-app/bypaxdpi-app/releases/latest',
-        winExe: 'https://github.com/bypaxdpi-app/bypaxdpi-windows/releases/latest',
-        winMsi: 'https://github.com/bypaxdpi-app/bypaxdpi-windows/releases/latest',
-        hero: 'https://github.com/bypaxdpi-app/bypaxdpi-windows/releases/latest' // Default to windows repo
+        mac: 'https://github.com/BypaxDPI/BypaxDPI-MacOS/releases/latest',
+        winExe: 'https://github.com/BypaxDPI/BypaxDPI-Windows/releases/latest',
+        winMsi: 'https://github.com/BypaxDPI/BypaxDPI-Windows/releases/latest',
+        hero: 'https://github.com/BypaxDPI/BypaxDPI-Windows/releases/latest' // Default to windows repo
     });
     const [verInfo, setVerInfo] = useState({
         mac: 'macOS 13.0+ • DMG',
-        winExe: 'Windows 10/11 • EXE',
-        winMsi: 'Windows 10/11 • MSI'
+        winExe: 'Windows 10/11 • EXE • 4.02 MB',
+        winMsi: 'Windows 10/11 • MSI • 5.30 MB'
     });
 
     useEffect(() => {
         const fetchReleases = async () => {
              // Repositories
-            const repoMac = 'bypaxdpi-app/bypaxdpi-app';
-            const repoWin = 'bypaxdpi-app/bypaxdpi-windows';
+            const repoMac = 'BypaxDPI/BypaxDPI-MacOS';
+            const repoWin = 'BypaxDPI/BypaxDPI-Windows';
             
             // API URLs
             const apiMac = `https://api.github.com/repos/${repoMac}/releases/latest`;
@@ -51,7 +51,7 @@ const useGitHubReleases = () => {
                     if (macAsset) {
                         newLinks.mac = macAsset.browser_download_url;
                         const ext = macAsset.name.split('.').pop().toUpperCase();
-                        newVerInfo.mac = `macOS 13.0+ • ${ext}`;
+                        newVerInfo.mac = `macOS 13.0+ • ${ext} • ${(macAsset.size / 1048576).toFixed(2)} MB`;
                     }
                 }
 
@@ -65,9 +65,11 @@ const useGitHubReleases = () => {
 
                     if (winAssetExe) {
                         newLinks.winExe = winAssetExe.browser_download_url;
+                        newVerInfo.winExe = `Windows 10/11 • EXE • ${(winAssetExe.size / 1048576).toFixed(2)} MB`;
                     }
                     if (winAssetMsi) {
                         newLinks.winMsi = winAssetMsi.browser_download_url;
+                        newVerInfo.winMsi = `Windows 10/11 • MSI • ${(winAssetMsi.size / 1048576).toFixed(2)} MB`;
                     }
                 }
 

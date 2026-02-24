@@ -73,7 +73,7 @@ const PlatformShowcase = () => {
                         <span>Windows</span>
                     </button>
                     <button 
-                        className={`platform-tab ${activePlatform === 'macos' ? 'active' : ''}`}
+                        className={`platform-tab tab-macos ${activePlatform === 'macos' ? 'active' : ''}`}
                         onClick={() => setActivePlatform('macos')}
                     >
                         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">

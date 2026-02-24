@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { FiZap, FiLock, FiTool } from 'react-icons/fi';
 
 const CheckIcon = () => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -104,19 +105,19 @@ const Comparison = () => {
                         </div>
                         <div className="comp-col comp-bypaxdpi-col">
                             <div className="comp-product-badge comp-bypaxdpi-badge">
-                                <span className="comp-product-icon">⚡</span>
+                                <span className="comp-product-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FiZap size={18} /></span>
                                 <span>BypaxDPI</span>
                             </div>
                         </div>
                         <div className="comp-col">
                             <div className="comp-product-badge comp-vpn-badge">
-                                <span className="comp-product-icon">🔒</span>
+                                <span className="comp-product-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FiLock size={18} /></span>
                                 <span>{t('compare.col.vpn')}</span>
                             </div>
                         </div>
                         <div className="comp-col">
                             <div className="comp-product-badge comp-dpi-badge">
-                                <span className="comp-product-icon">🛠️</span>
+                                <span className="comp-product-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FiTool size={18} /></span>
                                 <span>{t('compare.col.dpi')}</span>
                             </div>
                         </div>

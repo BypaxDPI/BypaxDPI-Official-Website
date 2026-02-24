@@ -2,18 +2,19 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import { motion } from 'framer-motion';
+import { FaGamepad, FaCode, FaPalette, FaUserGraduate, FaBriefcase, FaMusic } from 'react-icons/fa';
 
 const Trusted = () => {
   const { t } = useLanguage();
   useScrollAnimation();
 
   const logos = [
-    { text: `🎮 ${t('trusted.item.gamers')}`, color: "#3ba4ff" },
-    { text: `💻 ${t('trusted.item.developers')}`, color: "#4ade80" },
-    { text: `🎨 ${t('trusted.item.designers')}`, color: "#f472b6" },
-    { text: `📚 ${t('trusted.item.students')}`, color: "#facc15" },
-    { text: `🏢 ${t('trusted.item.professionals')}`, color: "#60a5fa" },
-    { text: `🎵 ${t('trusted.item.musicians')}`, color: "#c084fc" },
+    { icon: <FaGamepad size={22} color="#3ba4ff" />, text: t('trusted.item.gamers') },
+    { icon: <FaCode size={22} color="#4ade80" />, text: t('trusted.item.developers') },
+    { icon: <FaPalette size={22} color="#f472b6" />, text: t('trusted.item.designers') },
+    { icon: <FaUserGraduate size={22} color="#facc15" />, text: t('trusted.item.students') },
+    { icon: <FaBriefcase size={22} color="#60a5fa" />, text: t('trusted.item.professionals') },
+    { icon: <FaMusic size={22} color="#c084fc" />, text: t('trusted.item.musicians') },
   ];
 
   // duplicate array for seamless loop
@@ -47,15 +48,16 @@ const Trusted = () => {
                             style={{ 
                                 display: "inline-flex", 
                                 alignItems: "center", 
-                                gap: "8px",
+                                gap: "12px",
                                 margin: "0 30px", 
                                 fontSize: "1.2rem", 
                                 fontWeight: "600",
-                                color: "rgba(255, 255, 255, 0.8)",
+                                color: "var(--text-primary)",
                                 whiteSpace: "nowrap"
                             }}
                         >
-                           {item.text}
+                           {item.icon}
+                           <span>{item.text}</span>
                         </span>
                     ))}
                 </motion.div>
