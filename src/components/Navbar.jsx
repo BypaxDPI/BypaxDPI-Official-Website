@@ -126,10 +126,10 @@ const Navbar = () => {
             <PlatformsIcon />
             <span className="nav-link-label">{t('nav.platforms')}</span>
           </a>
-          <a href="#how-it-works" className="nav-link" onClick={(e) => handleNavClick(e, '#how-it-works')}>
+          <Link to="/how-it-works" className="nav-link" onClick={() => setMenuOpen(false)}>
             <HowItWorksIcon />
             <span className="nav-link-label">{t('nav.howItWorks')}</span>
-          </a>
+          </Link>
           <Link to="/download" className="nav-link" onClick={() => setMenuOpen(false)}>
             <DownloadIcon />
             <span className="nav-link-label">{t('nav.download')}</span>

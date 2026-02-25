@@ -237,6 +237,56 @@ export const translations = {
         "faq.q5.question": "What is Local Network Share?",
         "faq.q5.answer": "Local Network Share lets you share the DPI bypass proxy with other devices on your local network. Run BypaxDPI on one computer, and other devices can connect through it.",
 
+        // How It Works Page
+        "howpage.badge": "How It Works",
+        "howpage.titleLine1": "Understanding",
+        "howpage.titleLine2": "BypaxDPI",
+        "howpage.description": "Learn how the application bypasses Deep Packet Inspection, what to pay attention to, and how to get the most out of your unrestricted connection.",
+        
+        "howpage.whatTitle": "What does BypaxDPI actually do?",
+        "howpage.whatDesc": "BypaxDPI acts as a local proxy on your machine. Instead of routing your traffic through a remote VPN server which slows down your connection, it modifies the initial request packets locally to bypass the DPI systems of your ISP, ensuring you get your full internet speed.",
+        
+        "howpage.stepsTitle": "Operation Guide",
+        "howpage.stepsHeading": "How It Works step-by-step",
+        "howpage.stepsDesc": "A simple guide to understanding the process behind BypaxDPI.",
+        "howpage.step1.title": "Intercept",
+        "howpage.step1.desc": "When you try to access a blocked site, BypaxDPI intercepts the connection locally before it leaves your device.",
+        "howpage.step2.title": "Modify",
+        "howpage.step2.desc": "It breaks the domain name in the packets into pieces, confusing the ISP's DPI inspection system.",
+        "howpage.step3.title": "Send",
+        "howpage.step3.desc": "The modified packets are sent directly to the destination server, maintaining your original IP and speed.",
+        "howpage.step4.title": "Connect",
+        "howpage.step4.desc": "The server understands the packets and establishes a secure, unthrottled connection.",
+
+        "howpage.attentionTitle": "Important Details",
+        "howpage.attentionHeading": "What to Pay Attention To",
+        "howpage.attentionDesc": "Key factors to ensure the best experience and avoid issues.",
+        
+        "howpage.att1.title": "Not a VPN",
+        "howpage.att1.desc": "Your IP address is not hidden. Do not use BypaxDPI if you need anonymity. It is solely for bypassing restrictions.",
+        "howpage.att2.title": "Local Ports",
+        "howpage.att2.desc": "It uses local ports (like 8080) for the proxy. Ensure no other applications are conflicting with these ports.",
+        "howpage.att3.title": "Browser Warnings",
+        "howpage.att3.desc": "Sometimes, modified packets can trigger strict browser security checks. This is normal and safe.",
+
+        "howpage.faqTitle": "Application FAQ",
+        "howpage.faqHeading": "Common Questions",
+        "howpage.faq1.q": "Do I need to leave BypaxDPI open?",
+        "howpage.faq1.a": "Yes, it must be running in the background to continue bypassing restrictions.",
+        "howpage.faq2.q": "Is my data encrypted?",
+        "howpage.faq2.a": "Yes, if the website uses HTTPS, your data remains encrypted end-to-end.",
+        "howpage.faq3.q": "Will it bypass regional blocks (e.g., Netflix)?",
+        "howpage.faq3.a": "No, it does not change your location. It only bypasses ISP-level DPI restrictions.",
+        
+        "howpage.ctaTitle": "Ready for an Unrestricted Web?",
+        "howpage.ctaDesc": "No more blocked sites. No more throttled game connections.",
+        "howpage.ctaBtn": "Download Now",
+
+        // Not Found Page
+        "notfound.title": "Page Not Found",
+        "notfound.desc": "Oops! The page you are looking for doesn't exist or has been moved.",
+        "notfound.backHome": "Back to Home",
+
         // Proxy Page
         "proxy.badge": "Proxy & DPI Bypass",
         "proxy.titleLine1": "Set Up Proxy on",
@@ -574,6 +624,56 @@ export const translations = {
         "faq.q4.answer": "BypaxDPI Windows 10/11 (Rust & Tauri ile geliştirildi) ve macOS 13.0+ (Swift ile geliştirildi) destekler. Her iki platform da aynı DPI bypass teknolojisini kullanır.",
         "faq.q5.question": "Yerel Ağ Paylaşımı nedir?",
         "faq.q5.answer": "Yerel Ağ Paylaşımı, DPI bypass proxy'sini yerel ağınızdaki diğer cihazlarla paylaşmanızı sağlar. Bir bilgisayarda BypaxDPI çalıştırın, diğer cihazlar onun üzerinden bağlansın.",
+
+        // How It Works Page
+        "howpage.badge": "Nasıl Çalışır",
+        "howpage.titleLine1": "BypaxDPI'ı",
+        "howpage.titleLine2": "Anlamak",
+        "howpage.description": "Uygulamanın Derin Paket İncelemesini (DPI) nasıl aştığını, nelere dikkat etmeniz gerektiğini ve kısıtsız bağlantınızdan nasıl en iyi şekilde yararlanacağınızı öğrenin.",
+        
+        "howpage.whatTitle": "BypaxDPI tam olarak ne yapar?",
+        "howpage.whatDesc": "BypaxDPI cihazınızda yerel bir proxy olarak çalışır. Trafiğinizi bağlantınızı yavaşlatan uzak bir VPN sunucusu üzerinden yönlendirmek yerine, ilk istek paketlerini yerel olarak değiştirerek ISS'nizin DPI sistemlerini atlatır ve tam internet hızınızı almanızı sağlar.",
+        
+        "howpage.stepsTitle": "Çalışma Rehberi",
+        "howpage.stepsHeading": "Adım Adım Nasıl Çalışır",
+        "howpage.stepsDesc": "BypaxDPI'ın arkasındaki süreci anlamak için basit bir rehber.",
+        "howpage.step1.title": "Yakalama",
+        "howpage.step1.desc": "Engellenen bir siteye erişmeye çalıştığınızda, BypaxDPI bağlantıyı cihazınızdan ayrılmadan önce yerel olarak yakalar.",
+        "howpage.step2.title": "Değiştirme",
+        "howpage.step2.desc": "Paketlerdeki alan adını parçalara ayırarak ISS'nin DPI inceleme sistemini şaşırtır.",
+        "howpage.step3.title": "Gönderme",
+        "howpage.step3.desc": "Değiştirilen paketler doğrudan hedef sunucuya gönderilir, orijinal IP'niz ve hızınız korunur.",
+        "howpage.step4.title": "Bağlantı",
+        "howpage.step4.desc": "Sunucu paketleri anlar ve güvenli, kısıtlanmamış bir bağlantı kurar.",
+
+        "howpage.attentionTitle": "Önemli Detaylar",
+        "howpage.attentionHeading": "Nelere Dikkat Edilmeli",
+        "howpage.attentionDesc": "En iyi deneyimi sağlamak ve sorunlardan kaçınmak için temel faktörler.",
+        
+        "howpage.att1.title": "VPN Değildir",
+        "howpage.att1.desc": "IP adresiniz gizlenmez. Anonimliğe ihtiyacınız varsa BypaxDPI kullanmayın. Yalnızca kısıtlamaları aşmak içindir.",
+        "howpage.att2.title": "Yerel Portlar",
+        "howpage.att2.desc": "Proxy için yerel portlar (örn. 8080) kullanır. Diğer uygulamaların bu portlarla çakışmadığından emin olun.",
+        "howpage.att3.title": "Tarayıcı Uyarıları",
+        "howpage.att3.desc": "Bazen değiştirilmiş paketler katı tarayıcı güvenlik kontrollerini tetikleyebilir. Bu normal ve güvenlidir.",
+
+        "howpage.faqTitle": "Uygulama SSS",
+        "howpage.faqHeading": "Sıkça Sorulan Sorular",
+        "howpage.faq1.q": "BypaxDPI'ı açık bırakmam gerekir mi?",
+        "howpage.faq1.a": "Evet, kısıtlamaları aşmaya devam etmek için arka planda çalışıyor olmalıdır.",
+        "howpage.faq2.q": "Verilerim şifreleniyor mu?",
+        "howpage.faq2.a": "Evet, web sitesi HTTPS kullanıyorsa verileriniz uçtan uca şifreli kalır.",
+        "howpage.faq3.q": "Bölgesel engelleri (örn. Netflix) aşar mı?",
+        "howpage.faq3.a": "Hayır, konumunuzu değiştirmez. Yalnızca ISS düzeyindeki DPI kısıtlamalarını aşar.",
+        
+        "howpage.ctaTitle": "Kısıtsız Bir Web İçin Hazır Mısınız?",
+        "howpage.ctaDesc": "Artık engellenen site yok. Sınırlandırılan oyun bağlantısı yok.",
+        "howpage.ctaBtn": "Şimdi İndir",
+
+        // Not Found Page
+        "notfound.title": "Sayfa Bulunamadı",
+        "notfound.desc": "Oops! Aradığınız sayfa mevcut değil veya taşınmış.",
+        "notfound.backHome": "Ana Sayfaya Dön",
 
         // Proxy Page
         "proxy.badge": "Proxy & DPI Bypass",

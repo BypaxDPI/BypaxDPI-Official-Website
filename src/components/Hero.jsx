@@ -238,16 +238,13 @@ const Hero = () => {
                     <div className="shimmer"></div>
                     <span>{t('hero.downloadBtn')}</span>
                 </Link>                
-                <a href="#how-it-works" className="btn btn-secondary" onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
-                }}>
+                <Link to="/how-it-works" className="btn btn-secondary">
                     <span>{t('hero.learnMore')}</span>
                     <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
                     </svg>
-                </a>
+                </Link>
             </motion.div>
 
             <div className="hero-stats animate-on-scroll">
