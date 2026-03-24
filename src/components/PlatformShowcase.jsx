@@ -93,7 +93,7 @@ const PlatformShowcase = () => {
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                         className="platform-content"
                     >
-                        <div className="platform-card-wrapper">
+                        <div className={`platform-card-wrapper ${activePlatform === 'macos' ? 'mac-coming-soon-card' : ''}`}>
                             <SpotlightCard 
                                 className="platform-main-card" 
                                 spotlightColor={`${current.color}33`}
@@ -143,6 +143,11 @@ const PlatformShowcase = () => {
                                     </div>
                                 </div>
                             </SpotlightCard>
+                            {activePlatform === 'macos' && (
+                                <div className="coming-soon-overlay" aria-label={t('common.comingSoon')}>
+                                    <span className="coming-soon-pill">{t('common.comingSoon')}</span>
+                                </div>
+                            )}
                         </div>
                     </motion.div>
                 </AnimatePresence>

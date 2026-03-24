@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AnimatedBackground from '../components/AnimatedBackground';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiCrosshair, FiEdit3, FiSend, FiLink, FiShieldOff, FiCpu, FiAlertTriangle, FiInfo, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import WindowsAdminRightsTutorial from '../components/WindowsAdminRightsTutorial';
+import { motion } from 'framer-motion';
+import { FiCrosshair, FiEdit3, FiSend, FiLink, FiShieldOff, FiCpu, FiAlertTriangle, FiInfo } from 'react-icons/fi';
 
 const HowItWorksPage = () => {
     const { t } = useLanguage();
     const [activeFaq, setActiveFaq] = useState(null);
-    const [currentAdminStep, setCurrentAdminStep] = useState(0);
 
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -71,24 +71,6 @@ const HowItWorksPage = () => {
         { q: t('howpage.faq3.q'), a: t('howpage.faq3.a') },
     ];
 
-    const adminSteps = [
-        { img: '/images/steps/1.jpg', title: t('howpage.adminStep1.title'), desc: t('howpage.adminStep1.desc') },
-        { img: '/images/steps/2.jpg', title: t('howpage.adminStep2.title'), desc: t('howpage.adminStep2.desc') },
-        { img: '/images/steps/3.jpg', title: t('howpage.adminStep3.title'), desc: t('howpage.adminStep3.desc') },
-        { img: '/images/steps/4.jpg', title: t('howpage.adminStep4.title'), desc: t('howpage.adminStep4.desc') },
-        { img: '/images/steps/5.jpg', title: t('howpage.adminStep5.title'), desc: t('howpage.adminStep5.desc') },
-        { img: '/images/steps/6.jpg', title: t('howpage.adminStep6.title'), desc: t('howpage.adminStep6.desc') },
-        { img: '/images/steps/7.jpg', title: t('howpage.adminStep7.title'), desc: t('howpage.adminStep7.desc') },
-    ];
-
-    const handleNextStep = () => {
-        setCurrentAdminStep((prev) => (prev + 1) % adminSteps.length);
-    };
-
-    const handlePrevStep = () => {
-        setCurrentAdminStep((prev) => (prev - 1 + adminSteps.length) % adminSteps.length);
-    };
-
     return (
         <div className="proxy-page">
             <AnimatedBackground />
@@ -97,83 +79,37 @@ const HowItWorksPage = () => {
             <main className="proxy-page-content">
                 <div className="container">
 
-                    {/* ===== ADMIN RIGHTS SLIDER (HERO PLACEMENT) ===== */}
-                    <motion.div className="proxy-devices-section" {...fadeUp(0)} style={{ marginTop: '0', paddingTop: '60px' }}>
+                    {/* ===== ADMIN RIGHTS INSTANT GUIDE ===== */}
+                    <motion.div className="proxy-devices-section" {...fadeUp(0)} style={{ marginTop: '0', paddingTop: '28px', marginBottom: '36px' }}>
                         <div className="section-header">
                             <span className="section-badge localshare-badge-glow">{t('howpage.adminTitle')}</span>
                             <h2 className="section-title">{t('howpage.adminHeading')}</h2>
                             <p className="section-description">{t('howpage.adminDesc')}</p>
                         </div>
 
-                        <div className="admin-slider-container" style={{
+                        <div style={{
                             maxWidth: '960px',
-                            margin: '0 auto',
-                            background: 'rgba(20, 24, 35, 0.5)',
-                            backdropFilter: 'blur(24px)',
-                            WebkitBackdropFilter: 'blur(24px)',
-                            borderRadius: '32px',
-                            overflow: 'hidden',
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
-                            boxShadow: '0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)',
-                            position: 'relative'
+                            margin: '0 auto 16px',
+                            padding: '14px 16px',
+                            borderRadius: '16px',
+                            background: 'linear-gradient(135deg, rgba(59,164,255,0.1) 0%, rgba(74,222,128,0.08) 100%)',
+                            border: '1px solid rgba(114,191,255,0.24)',
+                            boxShadow: '0 10px 35px rgba(0,0,0,0.25)'
                         }}>
-                            <div className="proxy-dpi-glow-1" style={{ top: '-150px', right: '-100px', width: '400px', height: '400px', opacity: 0.4 }}></div>
-                            
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0' }}>
-                                {/* Slider Image Area */}
-                                <div className="admin-slider-image-wrapper" style={{ position: 'relative', height: '0', paddingBottom: '55%', background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%)', overflow: 'hidden' }}>
-                                    <AnimatePresence mode="wait">
-                                        <motion.img
-                                            key={currentAdminStep}
-                                            src={adminSteps[currentAdminStep].img}
-                                            alt={adminSteps[currentAdminStep].title}
-                                            initial={{ opacity: 0, x: 50, scale: 0.95 }}
-                                            animate={{ opacity: 1, x: 0, scale: 1 }}
-                                            exit={{ opacity: 0, x: -50, scale: 0.95 }}
-                                            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                                            style={{ position: 'absolute', top: '5%', left: '5%', width: '90%', height: '90%', objectFit: 'contain', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.6))' }}
-                                        />
-                                    </AnimatePresence>
-                                    
-                                    <button onClick={handlePrevStep} className="slider-btn" style={{ position: 'absolute', top: '50%', left: '24px', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%', width: '56px', height: '56px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer', backdropFilter: 'blur(12px)', zIndex: 10, transition: 'all 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'} onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}>
-                                        <FiChevronLeft size={28} />
-                                    </button>
-                                    <button onClick={handleNextStep} className="slider-btn" style={{ position: 'absolute', top: '50%', right: '24px', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '50%', width: '56px', height: '56px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', cursor: 'pointer', backdropFilter: 'blur(12px)', zIndex: 10, transition: 'all 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'} onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}>
-                                        <FiChevronRight size={28} />
-                                    </button>
-                                    
-                                    {/* Indicators overlaid */}
-                                    <div className="step-indicator" style={{ position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '12px', zIndex: 10, background: 'rgba(0,0,0,0.6)', padding: '12px 24px', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)' }}>
-                                        {adminSteps.map((_, i) => (
-                                            <div key={i} onClick={() => setCurrentAdminStep(i)} style={{ width: i === currentAdminStep ? '32px' : '8px', height: '8px', borderRadius: '4px', background: i === currentAdminStep ? 'var(--color-accent)' : 'rgba(255,255,255,0.3)', cursor: 'pointer', transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)', boxShadow: i === currentAdminStep ? '0 0 12px var(--color-accent)' : 'none' }}></div>
-                                        ))}
-                                    </div>
-                                </div>
-                                
-                                {/* Text Content */}
-                                <div className="admin-slider-content" style={{ padding: '40px', textAlign: 'center', borderTop: '1px solid rgba(255, 255, 255, 0.05)', background: 'rgba(0,0,0,0.2)' }}>
-                                    <motion.h3 
-                                        key={`title-${currentAdminStep}`}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                        style={{ fontSize: '1.8rem', marginBottom: '16px', color: 'var(--color-heading)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}
-                                    >
-                                        <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(var(--color-accent-rgb), 0.15)', color: 'var(--color-accent)', fontSize: '1.2rem', border: '1px solid rgba(var(--color-accent-rgb), 0.3)' }}>{currentAdminStep + 1}</span> 
-                                        {adminSteps[currentAdminStep].title}
-                                    </motion.h3>
-                                    <motion.p 
-                                        key={`desc-${currentAdminStep}`}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.1, duration: 0.3 }}
-                                        style={{ color: 'var(--color-text)', lineHeight: '1.8', fontSize: '1.1rem', maxWidth: '750px', margin: '0 auto' }}
-                                    >
-                                        {adminSteps[currentAdminStep].desc}
-                                    </motion.p>
-                                </div>
+                            <p style={{ fontSize: '0.74rem', color: 'var(--text-secondary)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                                {t('howpage.adminQuickLabel')}
+                            </p>
+                            <div style={{
+                                fontSize: '0.95rem',
+                                fontWeight: 700,
+                                color: 'var(--text-primary)',
+                                lineHeight: 1.5
+                            }}>
+                                {t('howpage.adminInstantLine')}
                             </div>
                         </div>
+
+                        <WindowsAdminRightsTutorial t={t} />
                     </motion.div>
 
                     {/* ===== INTRO (HOW IT WORKS HERO) ===== */}

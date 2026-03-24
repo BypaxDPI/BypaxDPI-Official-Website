@@ -95,7 +95,7 @@ const DownloadPage = () => {
                         </motion.div>
 
                         {/* macOS */}
-                        <motion.div className="download-platform-card" {...fadeUp(0.3)}>
+                        <motion.div className="download-platform-card mac-coming-soon-card" {...fadeUp(0.3)}>
                             <div className="dp-card-header">
                                 <div className="dp-icon dp-icon-mac">
                                     <svg viewBox="0 0 24 24" fill="currentColor">
@@ -140,6 +140,9 @@ const DownloadPage = () => {
                                         <path d="M7 17L17 7M17 7H7M17 7v10"/>
                                     </svg>
                                 </a>
+                            </div>
+                            <div className="coming-soon-overlay" aria-label={t('common.comingSoon')}>
+                                <span className="coming-soon-pill">{t('common.comingSoon')}</span>
                             </div>
                         </motion.div>
                     </div>

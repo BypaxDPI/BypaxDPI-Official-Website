@@ -7,13 +7,49 @@ import AnimatedBackground from '../components/AnimatedBackground';
 import { motion } from 'framer-motion';
 import { FaAndroid, FaApple, FaWindows, FaPlaystation, FaXbox, FaLinux } from 'react-icons/fa';
 import { MdDesktopMac } from 'react-icons/md';
-import { FiTv, FiShare2, FiDownload, FiPower, FiCheck, FiMonitor } from 'react-icons/fi';
+import { FiTv, FiShare2, FiDownload, FiPower, FiCheck, FiMonitor, FiX } from 'react-icons/fi';
+
+// Cihaza özel yerel video dosyaları - her cihaz için kendi .mp4 yolunuzu yazın (boş = "Video yakında")
+// Örnek: public/videos/proxy-android.mp4 -> src: '/videos/proxy-android.mp4'
+const DEVICE_VIDEO_SOURCES = {
+    android: '',
+    ios: '',
+    windows: '',
+    mac: '',
+    smarttv: '',
+    playstation: '',
+    xbox: '',
+    linux: '',
+};
 
 const ProxyPage = () => {
     const { t } = useLanguage();
     const [activeFaq, setActiveFaq] = useState(null);
+    const [selectedDevice, setSelectedDevice] = useState(null);
+    const [deviceModalOpen, setDeviceModalOpen] = useState(false);
+    const [deviceModalStep, setDeviceModalStep] = useState('list'); // 'list' | 'video'
 
     useEffect(() => { window.scrollTo(0, 0); }, []);
+
+    // Cihaz seçim/video modali açıksa sayfa scroll'unu kilitle
+    useEffect(() => {
+        if (deviceModalOpen) document.body.style.overflow = 'hidden';
+        else document.body.style.overflow = '';
+        return () => { document.body.style.overflow = ''; };
+    }, [deviceModalOpen]);
+
+    // Escape ile modalı kapat
+    useEffect(() => {
+        if (!deviceModalOpen) return;
+        const onEscape = (e) => {
+            if (e.key === 'Escape') {
+                setDeviceModalOpen(false);
+                setDeviceModalStep('list');
+            }
+        };
+        window.addEventListener('keydown', onEscape);
+        return () => window.removeEventListener('keydown', onEscape);
+    }, [deviceModalOpen]);
 
     const fadeUp = (delay = 0) => ({
         initial: { opacity: 0, y: 30 },
@@ -21,51 +57,19 @@ const ProxyPage = () => {
         transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }
     });
 
-    // YouTube video ID kullanıcı buraya kendi video ID'sini yazacak
-    const YOUTUBE_VIDEO_ID = 'YOUR_VIDEO_ID';
-
     const devices = [
-        {
-            icon: <FaAndroid size={32} color="#3ddc84" />,
-            title: t('proxy.device.android'),
-            desc: t('proxy.device.androidDesc'),
-        },
-        {
-            icon: <FaApple size={32} color="#f5f5f7" />,
-            title: t('proxy.device.ios'),
-            desc: t('proxy.device.iosDesc'),
-        },
-        {
-            icon: <FaWindows size={32} color="#00a4ef" />,
-            title: t('proxy.device.windows'),
-            desc: t('proxy.device.windowsDesc'),
-        },
-        {
-            icon: <MdDesktopMac size={32} color="#c1c8cf" />,
-            title: t('proxy.device.mac'),
-            desc: t('proxy.device.macDesc'),
-        },
-        {
-            icon: <FiTv size={32} color="#94a3b8" />,
-            title: t('proxy.device.smarttv'),
-            desc: t('proxy.device.smarttvDesc'),
-        },
-        {
-            icon: <FaPlaystation size={32} color="#003087" />,
-            title: t('proxy.device.playstation'),
-            desc: t('proxy.device.playstationDesc'),
-        },
-        {
-            icon: <FaXbox size={32} color="#107c10" />,
-            title: t('proxy.device.xbox'),
-            desc: t('proxy.device.xboxDesc'),
-        },
-        {
-            icon: <FaLinux size={32} color="#fcc624" />,
-            title: t('proxy.device.linux'),
-            desc: t('proxy.device.linuxDesc'),
-        },
+        { id: 'android', icon: <FaAndroid size={32} color="#3ddc84" />, title: t('proxy.device.android'), desc: t('proxy.device.androidDesc') },
+        { id: 'ios', icon: <FaApple size={32} color="#f5f5f7" />, title: t('proxy.device.ios'), desc: t('proxy.device.iosDesc') },
+        { id: 'windows', icon: <FaWindows size={32} color="#00a4ef" />, title: t('proxy.device.windows'), desc: t('proxy.device.windowsDesc') },
+        { id: 'mac', icon: <MdDesktopMac size={32} color="#c1c8cf" />, title: t('proxy.device.mac'), desc: t('proxy.device.macDesc') },
+        { id: 'smarttv', icon: <FiTv size={32} color="#94a3b8" />, title: t('proxy.device.smarttv'), desc: t('proxy.device.smarttvDesc') },
+        { id: 'playstation', icon: <FaPlaystation size={32} color="#003087" />, title: t('proxy.device.playstation'), desc: t('proxy.device.playstationDesc') },
+        { id: 'xbox', icon: <FaXbox size={32} color="#107c10" />, title: t('proxy.device.xbox'), desc: t('proxy.device.xboxDesc') },
+        { id: 'linux', icon: <FaLinux size={32} color="#fcc624" />, title: t('proxy.device.linux'), desc: t('proxy.device.linuxDesc') },
     ];
+
+    const selectedDeviceData = selectedDevice ? devices.find((d) => d.id === selectedDevice) : null;
+    const currentVideoSrc = selectedDevice ? DEVICE_VIDEO_SOURCES[selectedDevice] : null;
 
     const steps = [
         {
@@ -125,35 +129,25 @@ const ProxyPage = () => {
                         <p className="proxy-subtitle">{t('proxy.description')}</p>
                     </motion.div>
 
-                    {/* ===== VIDEO SECTION ===== */}
-                    <motion.div className="proxy-video-section" {...fadeUp(0.15)}>
-                        <div className="proxy-video-glow"></div>
-                        <div className="proxy-video-wrapper">
-                            <div className="proxy-video-header">
-                                <div className="window-controls">
-                                    <div className="control red"></div>
-                                    <div className="control yellow"></div>
-                                    <div className="control green"></div>
-                                </div>
-                                <span className="proxy-video-title">{t('proxy.videoTitle')}</span>
-                            </div>
-                            <div className="proxy-video-embed">
-                                <iframe
-                                    src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?rel=0&modestbranding=1`}
-                                    title={t('proxy.videoTitle')}
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                ></iframe>
-                            </div>
+                    {/* ===== CİHAZ SEÇİMİ BAŞLANGIÇ ===== */}
+                    <motion.div className="proxy-choose-device-section" {...fadeUp(0.1)}>
+                        <div className="section-header">
+                            <span className="section-badge localshare-badge-glow">{t('proxy.chooseDeviceBadge')}</span>
+                            <h2 className="section-title">{t('proxy.chooseDeviceTitle')}</h2>
+                            <p className="section-description">{t('proxy.chooseDeviceDesc')}</p>
                         </div>
-                        <p className="proxy-video-caption">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="12" y1="16" x2="12" y2="12"/>
-                                <line x1="12" y1="8" x2="12.01" y2="8"/>
-                            </svg>
-                            {t('proxy.videoCaption')}
-                        </p>
+                        <div className="proxy-choose-device-actions">
+                            <button
+                                type="button"
+                                className="btn btn-primary proxy-choose-device-btn"
+                                onClick={() => {
+                                    setDeviceModalStep('list');
+                                    setDeviceModalOpen(true);
+                                }}
+                            >
+                                {t('proxy.openDeviceSelector')}
+                            </button>
+                        </div>
                     </motion.div>
 
                     {/* ===== WHAT IS PROXY ===== */}
@@ -255,6 +249,18 @@ const ProxyPage = () => {
                                         </svg>
                                         <span>{t('proxy.dpiFeat3')}</span>
                                     </div>
+                                    <div className="proxy-dpi-feat">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
+                                        <span>{t('proxy.dpiFeat4')}</span>
+                                    </div>
+                                    <div className="proxy-dpi-feat">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                                            <polyline points="20 6 9 17 4 12"/>
+                                        </svg>
+                                        <span>{t('proxy.dpiFeat5')}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -312,6 +318,105 @@ const ProxyPage = () => {
 
                 </div>
             </main>
+
+            {/* Cihaz seçimi + video modali */}
+            {deviceModalOpen && (
+                <div
+                    className="video-modal-backdrop"
+                    onClick={() => {
+                        setDeviceModalOpen(false);
+                        setDeviceModalStep('list');
+                    }}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={
+                        deviceModalStep === 'list'
+                            ? t('proxy.deviceModalTitle')
+                            : t('proxy.videoTitleForDevice', { device: selectedDeviceData?.title ?? selectedDevice })
+                    }
+                >
+                    <div className="video-modal-box" onClick={(e) => e.stopPropagation()}>
+                        <div className="video-modal-header">
+                            <span className="video-modal-title">
+                                {deviceModalStep === 'list'
+                                    ? t('proxy.deviceModalTitle')
+                                    : t('proxy.videoTitleForDevice', { device: selectedDeviceData?.title ?? selectedDevice })}
+                            </span>
+                            <button
+                                className="video-modal-close"
+                                onClick={() => {
+                                    setDeviceModalOpen(false);
+                                    setDeviceModalStep('list');
+                                }}
+                                aria-label={t('proxy.closeDeviceModal')}
+                            >
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="20" height="20">
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="proxy-device-modal-body">
+                            {deviceModalStep === 'list' && (
+                                <div className="proxy-devices-grid proxy-device-modal-grid">
+                                    {devices.map((device, i) => (
+                                        <motion.button
+                                            key={device.id}
+                                            type="button"
+                                            className={`proxy-device-card proxy-device-card-selectable ${selectedDevice === device.id ? 'selected' : ''}`}
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ delay: i * 0.05 }}
+                                            onClick={() => {
+                                                setSelectedDevice(device.id);
+                                                setDeviceModalStep('video');
+                                            }}
+                                        >
+                                            <div className="proxy-device-icon">{device.icon}</div>
+                                            <h4>{device.title}</h4>
+                                            <p>{device.desc}</p>
+                                        </motion.button>
+                                    ))}
+                                </div>
+                            )}
+
+                            {deviceModalStep === 'video' && (
+                                <div className="proxy-modal-video-wrapper">
+                                    <div className="proxy-modal-video-top">
+                                        <button
+                                            type="button"
+                                            className="btn btn-secondary proxy-modal-back-btn"
+                                            onClick={() => setDeviceModalStep('list')}
+                                        >
+                                            {t('proxy.backToDevices')}
+                                        </button>
+                                    </div>
+                                    {currentVideoSrc ? (
+                                        <>
+                                            <video
+                                                src={currentVideoSrc}
+                                                controls
+                                                autoPlay
+                                                playsInline
+                                                className="video-modal-video"
+                                            />
+                                            <p className="proxy-modal-video-caption">
+                                                {t('proxy.videoCaption')}
+                                            </p>
+                                        </>
+                                    ) : (
+                                        <div className="proxy-video-coming-soon proxy-modal-video-coming-soon">
+                                            <span className="proxy-video-coming-soon-icon">📹</span>
+                                            <p>{t('proxy.videoComingSoon')}</p>
+                                            <p className="proxy-video-coming-soon-hint">{t('proxy.videoComingSoonHint')}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <Footer />
         </div>

@@ -47,7 +47,7 @@ export const LanguageProvider = ({ children }) => {
         }, 150);
     };
 
-    const t = (key) => {
+    const t = (key, vars) => {
         let translation = translations[currentLang]?.[key] || translations['en']?.[key] || key;
         
         // Handle placeholders
@@ -57,6 +57,11 @@ export const LanguageProvider = ({ children }) => {
             }
             if (translation.includes('{os}')) {
                 translation = translation.replace('{os}', os);
+            }
+            if (vars && typeof vars === 'object') {
+                Object.keys(vars).forEach((k) => {
+                    translation = translation.replace(new RegExp(`\\{${k}\\}`, 'g'), vars[k] ?? '');
+                });
             }
         }
         

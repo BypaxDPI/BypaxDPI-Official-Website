@@ -153,6 +153,12 @@ const LocalShare = () => {
                         </svg>
                         <span>{t('localshare.benefit3')}</span>
                     </div>
+                    <div className="benefit-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        <span>{t('localshare.benefit4')}</span>
+                    </div>
                 </div>
             </div>
         </section>

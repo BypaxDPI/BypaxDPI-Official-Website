@@ -1,0 +1,1310 @@
+.war-wrap {
+  position: relative;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: #0d1117;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* Başlangıç (Intro) Ekranı */
+.war-intro-overlay {
+  position: absolute;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  background: rgba(10, 15, 25, 0.85);
+  animation: war-fadeIn 0.5s ease;
+  text-align: center;
+  inset: 0;
+  backdrop-filter: blur(16px);
+}
+.war-intro-card {
+  max-width: 440px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: war-slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.war-intro-icon {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 24px;
+  animation: war-float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
+}
+.war-intro-title {
+  margin-bottom: 12px;
+  color: #fff;
+  letter-spacing: -0.5px;
+  font-size: 24px;
+  font-weight: 700;
+}
+.war-intro-desc {
+  line-height: 1.6;
+  margin-bottom: 32px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+.war-intro-btn {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  background: #3b82f6;
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 15px;
+  font-weight: 600;
+}
+.war-intro-btn:hover {
+  background: #2563eb;
+  box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.6);
+  transform: translateY(-2px);
+}
+
+/* --- YENİLENEN KUSURSUZ YÖNLENDİRME (TOOLTIP) SİSTEMİ --- */
+.war-guide-tooltip {
+  position: absolute;
+  z-index: 99999; /* HER ŞEYİN ÜSTÜNDE */
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #f8fafc;
+  background: #0f172a; /* Mavi/Beyaz arkada kaybolmaması için Koyu Lacivert */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+  gap: 8px;
+}
+.war-guide-tooltip::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  content: "";
+}
+
+/* Tooltip: Hedefin ÜSTÜNDE durur, ok AŞAĞI bakar */
+.war-guide-tooltip.pos-top {
+  bottom: calc(100% + 12px);
+  left: 50%;
+  animation: war-bounce-top 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+.war-guide-tooltip.pos-top::after {
+  bottom: -7px;
+  left: 50%;
+  border-width: 7px 7px 0 7px;
+  border-color: #0f172a transparent transparent transparent;
+  transform: translateX(-50%);
+}
+
+/* Tooltip: Hedefin ALTINDA durur, ok YUKARI bakar */
+.war-guide-tooltip.pos-bottom {
+  top: calc(100% + 12px);
+  left: 50%;
+  animation: war-bounce-bottom 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+.war-guide-tooltip.pos-bottom::after {
+  top: -7px;
+  left: 50%;
+  border-width: 0 7px 7px 7px;
+  border-color: transparent transparent #0f172a transparent;
+  transform: translateX(-50%);
+}
+
+/* Tooltip: Hedefin SAĞINDA durur, ok SOLA bakar */
+.war-guide-tooltip.pos-right {
+  top: 50%;
+  left: calc(100% + 12px);
+  animation: war-bounce-right 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+.war-guide-tooltip.pos-right::after {
+  top: 50%;
+  left: -7px;
+  border-width: 7px 7px 7px 0;
+  border-color: transparent #0f172a transparent transparent;
+  transform: translateY(-50%);
+}
+
+/* Koyu arka planda parlasın diye yanıp sönen noktayı Turkuaz yaptık */
+.war-guide-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #38bdf8;
+  animation: war-pulse-dot 1.5s infinite;
+}
+
+/* Nokta Atışı Animasyonlar */
+@keyframes war-bounce-top {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-6px);
+  }
+}
+@keyframes war-bounce-bottom {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+@keyframes war-bounce-right {
+  0%,
+  100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-50%) translateX(6px);
+  }
+}
+@keyframes war-pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.8);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(56, 189, 248, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+  }
+}
+@keyframes war-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes war-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes war-slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Adım Çubuğu */
+.war-steps-bar {
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: #111827;
+  gap: 0;
+  scrollbar-width: none;
+}
+.war-steps-bar::-webkit-scrollbar {
+  display: none;
+}
+.war-sdot {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 12px;
+  font-weight: 700;
+}
+.war-sdot.done {
+  border-color: #22c55e;
+  color: #fff;
+  background: #22c55e;
+  transform: scale(1.05);
+}
+.war-sdot.active {
+  border-color: #3b82f6;
+  color: #fff;
+  background: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25);
+  transform: scale(1.1);
+}
+.war-sline {
+  flex: 1;
+  min-width: 20px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.4s;
+}
+.war-sline.done {
+  background: #22c55e;
+}
+war-container .war-hint-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+  background: #1e2433;
+  font-size: 12.5px;
+  font-weight: 500;
+  gap: 8px;
+}
+.war-hint-arrow {
+  color: #3b82f6;
+  animation: war-blink 1.2s ease infinite;
+  font-size: 14px;
+}
+@keyframes war-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* İnteraktif Masaüstü */
+.war-desktop {
+  position: relative;
+  overflow: hidden;
+  height: 640px;
+  background: #0d1117;
+}
+.war-wallpaper {
+  position: absolute;
+  background:
+    linear-gradient(rgba(5, 10, 20, 0.35), rgba(5, 10, 20, 0.35)),
+    url("/images/win11_background.jpg") center center / cover no-repeat;
+  inset: 0;
+}
+.war-taskbar {
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(8, 12, 20, 0.92);
+  gap: 6px;
+  backdrop-filter: blur(12px);
+}
+.war-tb-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: default;
+  transition: background 0.2s;
+}
+.war-tb-icon:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.war-tb-clock {
+  position: absolute;
+  right: 12px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+  font-size: 11px;
+}
+
+/* Masaüstü İkonu */
+.war-dicon {
+  position: absolute;
+  z-index: 5;
+  top: 36px;
+  left: 52px;
+  width: 76px;
+  padding: 8px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+.war-dicon:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+.war-dicon:active {
+  transform: scale(0.95);
+}
+.war-dicon.sel {
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  background: rgba(59, 130, 246, 0.25);
+}
+.war-dicon-img {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 6px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+}
+.war-dicon:hover .war-dicon-img {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+.war-dicon-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.war-dicon-label {
+  color: #e2e8f0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  font-size: 11px;
+}
+
+/* Sağ Tık Menüsü */
+.war-ctx {
+  position: absolute;
+  z-index: 50;
+  top: 68px;
+  left: 136px;
+  width: 210px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(28, 32, 42, 0.97);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  transform-origin: top left;
+  animation: war-popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+@keyframes war-popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.war-citem {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: #e2e8f0;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 12.5px;
+  gap: 9px;
+}
+.war-citem:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.war-citem.hot {
+  color: #7dd3fc;
+  background: rgba(59, 130, 246, 0.15);
+  font-weight: 600;
+}
+.war-citem.hot:hover {
+  background: rgba(59, 130, 246, 0.25);
+}
+.war-csep {
+  height: 1px;
+  margin: 4px 0;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Windows 11 Özellikler Penceresi */
+.war-wdlg {
+  position: absolute;
+  z-index: 70;
+  top: 10px;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+  max-height: 580px;
+  border: 1px solid #999;
+  border-radius: 8px;
+  color: #000;
+  background: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%);
+  animation: war-dlgScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes war-dlgScale {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+.war-wtbar {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: #ffffff;
+}
+.war-wtitle {
+  flex: 1;
+  margin-left: 6px;
+  color: #000;
+  font-size: 12px;
+}
+.war-wclose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 28px;
+  margin-right: -6px;
+  border-radius: 4px;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.1s;
+  font-size: 14px;
+}
+.war-wclose:hover {
+  color: #fff;
+  background: #e81123;
+}
+.war-wtabs {
+  display: flex;
+  padding: 0 4px;
+  background: #ffffff;
+}
+.war-wtab {
+  position: relative;
+  padding: 6px 10px;
+  margin-right: 2px;
+  border: 1px solid transparent;
+  color: #000;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.war-wtab:hover {
+  background: #f3f3f3;
+}
+.war-wtab.active {
+  z-index: 2;
+  margin-bottom: -1px;
+  border: 1px solid #d9d9d9;
+  border-bottom: 1px solid #fff;
+  background: #fff;
+}
+.war-wtabcontent {
+  flex: 1;
+  padding: 16px;
+  border-top: 1px solid #d9d9d9;
+  background: #fff;
+  font-size: 12px;
+}
+
+/* İçerikler */
+.war-g-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 16px;
+}
+.war-g-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+.war-g-input {
+  flex: 1;
+  padding: 3px 6px;
+  border: 1px solid #8e8f8f;
+  border-radius: 0;
+  color: #000;
+  font-size: 12px;
+}
+.war-hr {
+  margin: 12px 0;
+  border: none;
+  border-top: 1px solid #d9d9d9;
+}
+.war-g-grid {
+  display: grid;
+  align-items: start;
+  grid-template-columns: 100px 1fr;
+  row-gap: 8px;
+}
+.war-g-label {
+  color: #000;
+}
+.war-g-value {
+  color: #000;
+  word-break: break-all;
+}
+.war-compat-intro {
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.war-link {
+  display: inline-block;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  color: #0066cc;
+  text-decoration: none;
+}
+.war-link:hover {
+  text-decoration: underline;
+}
+.war-fieldset {
+  padding: 8px 12px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #d9d9d9;
+}
+.war-legend {
+  padding: 0 4px;
+  color: #000;
+}
+.war-chkrow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  cursor: pointer;
+  gap: 6px;
+}
+.war-chkrow input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #0078d4;
+}
+
+/* Pulse Highlight Box */
+.war-pulse-border {
+  position: relative;
+  padding: 6px 8px;
+  margin-left: -8px;
+  border-radius: 6px;
+  outline: 2px dashed #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+  animation: war-pblink 1.5s ease-in-out infinite;
+}
+@keyframes war-pblink {
+  0%,
+  100% {
+    outline-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.05);
+  }
+  50% {
+    outline-color: #93c5fd;
+    background: rgba(59, 130, 246, 0.15);
+  }
+}
+
+.war-wfooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px;
+  border-top: 1px solid #dfdfdf;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background: #f0f0f0;
+  gap: 8px;
+}
+.war-btn {
+  min-width: 75px;
+  padding: 4px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 12px;
+}
+.war-btn:hover:not(:disabled) {
+  border-color: #0078d4;
+  background: #e5f1fb;
+}
+.war-btn:disabled {
+  border-color: #d9d9d9;
+  opacity: 0.7;
+  color: #999;
+  cursor: default;
+}
+
+/* --- UAC (Kullanıcı Hesabı Denetimi) ARKA PLAN KARARMASI --- */
+.war-uac-backdrop {
+  position: absolute;
+  z-index: 88;
+  background: rgba(0, 0, 0, 0.5);
+  animation: war-fadeIn 0.2s ease;
+  inset: 0;
+  backdrop-filter: blur(5px);
+}
+
+/* UAC Prompt */
+.war-uac {
+  position: absolute;
+  z-index: 90;
+  top: 60px;
+  left: 50%;
+  width: 370px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
+  transform: translateX(-50%);
+  animation: war-dlgScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.war-uac-head {
+  padding: 18px 20px;
+  color: #fff;
+  background: linear-gradient(180deg, #1e3c80 0%, #172e65 100%);
+}
+.war-uac-body {
+  padding: 18px;
+  background: #f3f3f3;
+}
+
+/* --- BypaxDPI App Simulation --- */
+.war-app-window {
+  position: absolute;
+  z-index: 85;
+  top: 45%;
+  left: 50%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  width: 360px;
+  height: 600px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: #090a0f; /* Uygulamanın koyu arkaplanı */
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  transform: translate(-50%, -50%);
+  animation: war-appPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes war-appPop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.war-app-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  padding: 0 0 0 12px;
+  background: transparent;
+  user-select: none;
+}
+.war-app-tb-left {
+  display: flex;
+  align-items: center;
+  color: #64748b;
+  font-size: 11px;
+  gap: 8px;
+}
+.war-app-tb-left img {
+  width: 14px;
+  height: 14px;
+  filter: grayscale(100%) brightness(1.5);
+}
+.war-app-tb-right {
+  display: flex;
+  height: 100%;
+}
+.war-app-tb-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  color: #64748b;
+  cursor: pointer;
+  transition: background 0.1s;
+  font-size: 12px;
+}
+.war-app-tb-btn.close:hover {
+  color: white;
+  background: #e81123;
+}
+.war-app-tb-btn:hover:not(.close) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Error View */
+.war-app-error {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 32px;
+}
+.war-app-logo-large {
+  width: 86px;
+  height: 86px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.35));
+}
+.war-app-err-title {
+  margin-bottom: 12px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: -0.5px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.war-app-err-desc {
+  line-height: 1.5;
+  margin-bottom: 32px;
+  color: #94a3b8;
+  text-align: center;
+  font-size: 13.5px;
+}
+.war-app-err-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  gap: 14px;
+}
+.war-app-err-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  font-size: 18px;
+}
+.war-app-err-text {
+  line-height: 1.5;
+  color: #e2e8f0;
+  font-size: 12px;
+}
+.war-app-btn-blue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background: #3b82f6;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 8px;
+}
+.war-app-btn-blue:hover {
+  background: #2563eb;
+}
+.war-app-btn-red {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background: #ef4444;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 14px;
+  font-weight: 600;
+}
+.war-app-btn-red:hover {
+  background: #dc2626;
+}
+
+/* Ready View (ORİJİNAL TASARIM) */
+.war-app-ready {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.war-ready-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+}
+.war-ready-brand {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  letter-spacing: 1.5px;
+  font-size: 16px;
+  font-weight: 800;
+  gap: 10px;
+}
+.war-ready-brand img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6));
+}
+
+/* Hazır Badge Orijinal Renkleri */
+.war-ready-badge {
+  display: flex;
+  align-items: center;
+  padding: 5px 14px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 100px;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.08);
+  letter-spacing: 0.5px;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 6px;
+}
+.war-ready-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f59e0b;
+  box-shadow: 0 0 6px #f59e0b;
+}
+
+.war-ready-center {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+.war-ready-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 32px;
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.05);
+  animation: war-pulse-dot 2s infinite;
+}
+.war-ready-circle svg {
+  width: 44px;
+  height: 44px;
+  color: #3b82f6;
+}
+.war-ready-title {
+  margin-bottom: 8px;
+  color: #3b82f6;
+  text-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+  letter-spacing: 2px;
+  font-size: 28px;
+  font-weight: 800;
+}
+.war-ready-desc {
+  margin-bottom: 48px;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* BAĞLAN BUTONU BOYUT SORUNU ÇÖZÜMÜ */
+.war-app-btn-white {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 260px;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.1s;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-weight: 800;
+  gap: 10px;
+}
+.war-app-btn-white svg {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+} /* SVG BOYUTU BURADA SABİTLENDİ */
+.war-app-btn-white:active {
+  transform: scale(0.97);
+}
+
+.war-ready-bottom {
+  display: flex;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: transparent;
+}
+.war-nav-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.15s;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+  font-weight: 700;
+  gap: 8px;
+}
+.war-nav-item:hover {
+  color: #fff;
+}
+.war-nav-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Error View */
+.war-app-error {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 32px;
+}
+.war-app-logo-large {
+  width: 86px;
+  height: 86px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.35));
+}
+.war-app-err-title {
+  margin-bottom: 12px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: -0.5px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.war-app-err-desc {
+  line-height: 1.5;
+  margin-bottom: 32px;
+  color: #94a3b8;
+  text-align: center;
+  font-size: 13.5px;
+}
+.war-app-err-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  gap: 14px;
+}
+.war-app-err-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  font-size: 18px;
+}
+.war-app-err-text {
+  line-height: 1.5;
+  color: #e2e8f0;
+  font-size: 12px;
+}
+.war-app-btn-blue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background: #3b82f6;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 8px;
+}
+.war-app-btn-blue:hover {
+  background: #2563eb;
+}
+.war-app-btn-red {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background: #ef4444;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-size: 14px;
+  font-weight: 600;
+}
+.war-app-btn-red:hover {
+  background: #dc2626;
+}
+
+/* Ready View */
+.war-app-ready {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.war-ready-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+.war-ready-brand {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  gap: 10px;
+}
+.war-ready-brand img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6));
+}
+.war-ready-badge {
+  display: flex;
+  align-items: center;
+  padding: 5px 12px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 100px;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  letter-spacing: 0.5px;
+  font-size: 10px;
+  font-weight: 700;
+  gap: 6px;
+}
+.war-ready-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f59e0b;
+}
+.war-ready-center {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+.war-ready-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  margin-bottom: 32px;
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  border-radius: 50%;
+  animation: war-pulse-dot 2s infinite;
+}
+.war-ready-circle svg {
+  width: 48px;
+  height: 48px;
+  color: #3b82f6;
+}
+.war-ready-title {
+  margin-bottom: 8px;
+  color: #3b82f6;
+  letter-spacing: 2.5px;
+  font-size: 26px;
+  font-weight: 700;
+}
+.war-ready-desc {
+  margin-bottom: 48px;
+  color: #94a3b8;
+  font-size: 13px;
+}
+.war-app-btn-white {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.1s;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  font-weight: 700;
+  gap: 8px;
+}
+.war-app-btn-white:active {
+  transform: scale(0.97);
+}
+.war-ready-bottom {
+  display: flex;
+  padding: 16px 0;
+  background: #050608;
+}
+.war-nav-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.15s;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+  font-weight: 700;
+  gap: 8px;
+}
+.war-nav-item:hover {
+  color: #fff;
+}
+.war-nav-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Success Overlay */
+.war-success {
+  position: absolute;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(5, 15, 10, 0.95);
+  animation: war-fadeIn 0.3s ease;
+  inset: 0;
+  backdrop-filter: blur(8px);
+}
+.war-sicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  color: #fff;
+  background: #22c55e;
+  animation: war-dlgScale 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 36px;
+}
+.war-reset-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  background: #3b82f6;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  font-weight: 600;
+}
+.war-reset-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 600px) {
+  .war-desktop {
+    height: 580px;
+  }
+  .war-wdlg {
+    top: 5px;
+    width: 94%;
+    max-height: calc(100% - 60px);
+  }
+  .war-uac {
+    width: 92%;
+  }
+  .war-g-grid {
+    grid-template-columns: 85px 1fr;
+  }
+  .war-app-window {
+    width: 92%;
+    height: 550px;
+  }
+}

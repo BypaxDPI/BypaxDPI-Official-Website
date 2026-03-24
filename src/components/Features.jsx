@@ -94,6 +94,38 @@ const Features = () => {
             ),
             color: '#2dd4bf',
         },
+        {
+            key: 'crashProof',
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z" />
+                    <path d="M9 12l2 2 4-4" />
+                </svg>
+            ),
+            color: '#22c55e',
+        },
+        {
+            key: 'proxyRestore',
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M17 1l4 4-4 4" />
+                    <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                    <path d="M7 23l-4-4 4-4" />
+                    <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+                </svg>
+            ),
+            color: '#38bdf8',
+        },
+        {
+            key: 'smartReconnect',
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+                    <polyline points="21 3 21 9 15 9" />
+                </svg>
+            ),
+            color: '#f59e0b',
+        },
     ];
 
     return (

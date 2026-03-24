@@ -509,6 +509,7 @@ img { max-width: 100%; height: auto; }
 .platform-tab.tab-macos.active { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); box-shadow: 0 0 24px rgba(139,92,246,0.3); }
 .platform-content { max-width: 900px; margin: 0 auto; }
 .platform-main-card { padding: 0 !important; }
+.platform-card-wrapper { position: relative; }
 .platform-card-inner { display: flex; gap: 40px; padding: 40px; align-items: flex-start; }
 .platform-info { flex: 1; }
 .platform-icon-wrapper { width: 56px; height: 56px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
@@ -559,6 +560,22 @@ img { max-width: 100%; height: auto; }
 .localshare-benefits { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
 .benefit-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-secondary); }
 .benefit-item svg { width: 16px; height: 16px; stroke: var(--color-accent); flex-shrink: 0; }
+
+.download-trust-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+.download-trust-pill {
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border: 1px solid rgba(74,222,128,0.2);
+    background: rgba(74,222,128,0.05);
+}
 
 /* === HOW IT WORKS === */
 .how-section { padding: var(--section-padding) 0; }
@@ -624,6 +641,40 @@ img { max-width: 100%; height: auto; }
 .download-platforms { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto 64px; }
 .download-platform-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition-base); }
 .download-platform-card:hover { border-color: var(--border-light); box-shadow: var(--shadow-lg), 0 0 60px rgba(59,164,255,0.08); transform: translateY(-4px); }
+
+/* Reusable macOS "coming soon" overlay */
+.mac-coming-soon-card { position: relative; overflow: hidden; }
+.coming-soon-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 20% 15%, rgba(139, 92, 246, 0.16) 0%, transparent 42%),
+        radial-gradient(circle at 80% 85%, rgba(59, 164, 255, 0.12) 0%, transparent 45%),
+        rgba(2, 6, 23, 0.28);
+    backdrop-filter: blur(3px) saturate(1.1);
+    -webkit-backdrop-filter: blur(3px) saturate(1.1);
+    z-index: 20;
+}
+.coming-soon-pill {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #f5f3ff;
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow:
+        0 6px 28px rgba(0, 0, 0, 0.55),
+        0 0 18px rgba(139, 92, 246, 0.55),
+        0 0 34px rgba(59, 164, 255, 0.32);
+}
 .dp-card-header { display: flex; align-items: center; gap: 16px; padding: 28px 28px 0; }
 .dp-icon { width: 52px; height: 52px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .dp-icon svg { width: 26px; height: 26px; color: white; }
@@ -1068,6 +1119,88 @@ img { max-width: 100%; height: auto; }
     margin: 0 auto;
 }
 
+/* Cihaz seçimi bölümü */
+.proxy-choose-device-section {
+    margin-bottom: 24px;
+}
+.proxy-choose-device-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+.proxy-choose-device-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.proxy-choose-device-selected {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.proxy-choose-device-selected span {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+.proxy-device-card-selectable {
+    cursor: pointer;
+    border: 1px solid var(--border-light);
+    text-align: left;
+    background: var(--bg-card);
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s, transform 0.15s ease-out;
+}
+.proxy-device-card-selectable:hover {
+    border-color: rgba(59,164,255,0.5);
+    box-shadow: 0 18px 45px rgba(15,23,42,0.7);
+    transform: translateY(-3px);
+}
+.proxy-device-card-selectable.selected {
+    border-color: var(--color-primary-light);
+    background: rgba(59,164,255,0.08);
+    box-shadow: 0 0 0 1px rgba(59,164,255,0.35), 0 18px 45px rgba(15,23,42,0.9);
+}
+.proxy-video-placeholder {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 64px 24px;
+    background: rgba(10,10,16,0.6);
+    border: 1px dashed var(--border-light);
+    border-radius: var(--radius-xl);
+    text-align: center;
+}
+.proxy-video-placeholder-icon {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    opacity: 0.6;
+}
+.proxy-video-placeholder-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+.proxy-video-coming-soon {
+    padding: 48px 24px;
+    text-align: center;
+    background: rgba(0,0,0,0.3);
+}
+.proxy-video-coming-soon-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+}
+.proxy-video-coming-soon p {
+    margin: 0 0 8px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+.proxy-video-coming-soon-hint {
+    font-size: 0.8rem !important;
+    color: var(--text-muted) !important;
+}
+
 /* Video Section */
 .proxy-video-section {
     max-width: 820px;
@@ -1130,6 +1263,60 @@ img { max-width: 100%; height: auto; }
     color: var(--text-muted);
 }
 .proxy-video-caption svg { stroke: var(--text-muted); flex-shrink: 0; }
+
+/* Proxy cihaz seçim / video modal içeriği */
+.proxy-device-modal-body {
+    padding: 56px 24px 24px;
+    background: radial-gradient(circle at top, rgba(59,164,255,0.16) 0, transparent 55%), #020617;
+}
+.proxy-device-modal-grid {
+    gap: 18px;
+}
+
+.proxy-modal-video-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.proxy-modal-video-top {
+    display: flex;
+    justify-content: flex-start;
+}
+.proxy-modal-back-btn {
+    font-size: 0.85rem;
+}
+.proxy-modal-video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+}
+.proxy-modal-video-embed iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.proxy-modal-video-caption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+.proxy-modal-video-coming-soon {
+    padding: 40px 16px;
+}
+
+@media (max-width: 768px) {
+    .proxy-choose-device-section {
+        margin-bottom: 16px;
+    }
+    .proxy-modal-video-top {
+        justify-content: center;
+    }
+}
 
 /* Explain Section */
 .proxy-explain-section {
@@ -1373,6 +1560,9 @@ img { max-width: 100%; height: auto; }
     .proxy-hero { margin-bottom: 40px; }
     .proxy-title { font-size: 1.8rem; }
     .proxy-subtitle { font-size: 0.92rem; }
+    .proxy-choose-device-section { margin-bottom: 36px; }
+    .proxy-video-placeholder { padding: 48px 16px; }
+    .proxy-video-placeholder-icon svg { width: 40px; height: 40px; }
     .proxy-video-section { margin-bottom: 48px; }
     .proxy-video-header { padding: 12px 14px; }
     .proxy-video-title { font-size: 0.78rem; margin-right: 32px; }
@@ -1710,14 +1900,16 @@ img { max-width: 100%; height: auto; }
     transform: scale(1.08);
 }
 
-/* Modal Video tam doldur, aspect ratio koru */
+/* Modal video – kendi boyutunu koru, taşarsa küçült */
 .video-modal-video {
-    width: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
     max-height: 88vh;
     display: block;
     background: #000;
     outline: none;
-    object-fit: contain;
+    margin: 0 auto;
 }
 
 @media (max-width: 600px) {

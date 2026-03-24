@@ -58,6 +58,11 @@ const Download = () => {
                                         <span>{t('download.githubWin')}</span>
                                     </a>
                                 </div>
+                                <div className="download-trust-pills">
+                                    <span className="download-trust-pill">{t('download.winTrust1')}</span>
+                                    <span className="download-trust-pill">{t('download.winTrust2')}</span>
+                                    <span className="download-trust-pill">{t('download.winTrust3')}</span>
+                                </div>
                             </div>
 
                             {/* macOS Group */}
@@ -84,6 +89,9 @@ const Download = () => {
                                         </svg>
                                         <span>{t('download.githubMac')}</span>
                                     </a>
+                                </div>
+                                <div className="coming-soon-overlay" aria-label={t('common.comingSoon')}>
+                                    <span className="coming-soon-pill">{t('common.comingSoon')}</span>
                                 </div>
                             </div>
                         </div>
