@@ -152,7 +152,7 @@ const Navbar = () => {
           </Link>
           <button className="lang-switcher" id="langSwitcher" onClick={toggleLanguage} aria-label="Switch Language">
             <span className="lang-icon" style={{display: 'flex'}}><FiGlobe size={18} /></span>
-            <span className="lang-text" id="currentLang">{currentLang.toUpperCase()}</span>
+            <span className="lang-text" id="currentLang">{currentLang === 'en' ? 'TR' : 'EN'}</span>
           </button>
           <a href="https://github.com/BypaxDPI" target="_blank" rel="noopener noreferrer" className="nav-github" aria-label="GitHub">
             <GitHubIcon />

@@ -405,7 +405,7 @@ export const translations = {
         "proxy.device.iosDesc": "WiFi proxy configuration",
         "proxy.device.windows": "Windows PC",
         "proxy.device.windowsDesc": "System proxy settings",
-
+        "proxy.device.mac": "macOS",
         "proxy.device.macDesc": "Network proxy preferences",
         "proxy.device.smarttv": "Smart TV",
         "proxy.device.smarttvDesc": "WiFi proxy settings",
@@ -1018,7 +1018,7 @@ export const translations = {
         "proxy.device.iosDesc": "WiFi proxy yapılandırması",
         "proxy.device.windows": "Windows PC",
         "proxy.device.windowsDesc": "Sistem proxy ayarları",
-
+        "proxy.device.mac": "MacOS",
         "proxy.device.macDesc": "Ağ proxy tercihleri",
         "proxy.device.smarttv": "Akıllı TV",
         "proxy.device.smarttvDesc": "WiFi proxy ayarları",
