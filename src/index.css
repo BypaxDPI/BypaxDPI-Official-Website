@@ -638,7 +638,7 @@ img { max-width: 100%; height: auto; }
 .download-page-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 14px; letter-spacing: -0.03em; }
 .download-page-subtitle { font-size: 1.05rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto; line-height: 1.7; }
 
-.download-platforms { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto 64px; }
+.download-platforms { display: flex; flex-direction: column; gap: 16px; max-width: 550px; margin: 0 auto 64px; align-items: center;}
 .download-platform-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition-base); }
 .download-platform-card:hover { border-color: var(--border-light); box-shadow: var(--shadow-lg), 0 0 60px rgba(59,164,255,0.08); transform: translateY(-4px); }
 
