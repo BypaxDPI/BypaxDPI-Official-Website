@@ -6,6 +6,7 @@ import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiZap, FiRadio, FiMousePointer } from 'react-icons/fi';
 import { FaCircle } from 'react-icons/fa';
+import InteractiveDemo from './InteractiveDemo';
 
 const StatCounter = ({ target, suffix = '', label }) => {
     const [count, setCount] = useState(0);
@@ -261,54 +262,15 @@ const Hero = () => {
         </div>
 
         <div className="hero-visual animate-on-scroll">
-            <motion.div 
+            <div 
                 className="app-preview"
-                style={{
-                    rotateX,
-                    rotateY,
-                    transformStyle: "preserve-3d",
-                }}
             >
-                <div className="app-window">
-                    <div className="window-header">
-                        <div className="window-controls">
-                            <span className="control red"></span>
-                            <span className="control yellow"></span>
-                            <span className="control green"></span>
-                        </div>
-                        <span className="window-title">BypaxDPI</span>
-                    </div>
-                    <div className="window-content">
-                        <div className="status-indicator connected">
-                            <div className="pulse-ring"></div>
-                            <div className="pulse-core"></div>
-                        </div>
-                        <p className="status-text">{t('hero.statusConnected')}</p>
-                        <p className="status-sub">{t('hero.statusSub')}</p>
-
-                        <div className="app-stats">
-                            <div className="app-stat">
-                                <span className="app-stat-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FiZap size={16} /></span>
-                                <div className="app-stat-info">
-                                    <span className="app-stat-value">1ms</span>
-                                    <span className="app-stat-label">Ping</span>
-                                </div>
-                            </div>
-                            <div className="app-stat">
-                                <span className="app-stat-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FiRadio size={16} /></span>
-                                <div className="app-stat-info">
-                                    <span className="app-stat-value">Active</span>
-                                    <span className="app-stat-label">Proxy</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <InteractiveDemo />
 
                 <div className="app-glow-ring"></div>
-            </motion.div>
+            </div>
             
-            <div className="floating-elements">
+            <div className="floating-elements" style={{ pointerEvents: 'none' }}>
                 <motion.div 
                     className="float-card float-1"
                     animate={{ y: [0, -12, 0], rotate: [0, 2, 0] }}

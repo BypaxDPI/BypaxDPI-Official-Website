@@ -1,7 +1,7 @@
 export const translations = {
     en: {
         // Meta
-        "meta.title": "BypaxDPI - DPI Bypass Tool for Windows & macOS",
+        "meta.title": "BypaxDPI - DPI Bypass Tool for Windows",
 
         // Navigation
         "nav.features": "Features",
@@ -31,9 +31,9 @@ export const translations = {
         "hero.float3": "1-Click Setup",
 
         // Platform Section
-        "platform.badge": "Cross-Platform",
-        "platform.title": "Native on Every Platform",
-        "platform.description": "Built from the ground up for each operating system. Same powerful DPI bypass, different native technologies.",
+        "platform.badge": "Native Performance",
+        "platform.title": "Lightning Fast on Windows",
+        "platform.description": "Built from the ground up for Windows. Same powerful DPI bypass, wrapped in an extremely lightweight native application.",
         "platform.windows.title": "BypaxDPI for Windows",
         "platform.windows.subtitle": "Built with Rust & Tauri",
         "platform.windows.desc": "Lightning-fast native Windows application built with Rust and Tauri framework. Minimal resource usage, maximum performance.",
@@ -41,15 +41,9 @@ export const translations = {
         "platform.windows.feat2": "System tray integration",
         "platform.windows.feat3": "Auto-start with Windows",
         "platform.windows.feat4": "Fluent Design UI",
-        "platform.macos.title": "BypaxDPI for macOS",
-        "platform.macos.subtitle": "Built with Swift & SwiftUI",
-        "platform.macos.desc": "Beautiful native macOS application crafted with Swift. Integrates seamlessly with your Mac experience.",
-        "platform.macos.feat1": "Menu bar integration",
-        "platform.macos.feat2": "Native SwiftUI interface",
-        "platform.macos.feat3": "Homebrew support",
-        "platform.macos.feat4": "macOS 13.0+ optimized",
-        "platform.sameDPI": "Same DPI Bypass Engine",
-        "platform.sameDPIDesc": "Both platforms use the same proven SpoofDPI technology to bypass Deep Packet Inspection restrictions.",
+
+        "platform.sameDPI": "Proven Technology",
+        "platform.sameDPIDesc": "BypaxDPI uses the proven SpoofDPI technology to bypass Deep Packet Inspection restrictions silently.",
 
         // Local Network Share Section
         "localshare.badge": "Whole-Home Freedom",
@@ -107,7 +101,7 @@ export const translations = {
         "how.title": "Simple. Elegant. Effective.",
         "how.description": "Get started in minutes with our streamlined process.",
         "how.step1.title": "Download & Install",
-        "how.step1.description": "Download BypaxDPI from GitHub releases. Install it on your Windows or macOS device.",
+        "how.step1.description": "Download BypaxDPI from GitHub releases. Install it on your Windows device.",
         "how.step2.title": "Click Connect",
         "how.step2.description": "Open BypaxDPI and hit the connect button. The DPI bypass engine starts instantly.",
         "how.step3.title": "You're Free",
@@ -170,10 +164,8 @@ export const translations = {
         "download.buttonWin": "Download for Windows",
         "download.buttonWinExe": "Windows EXE",
         "download.buttonWinMsi": "Windows MSI",
-        "download.buttonMac": "Download for macOS",
         "download.github": "View on GitHub",
         "download.githubWin": "GitHub (Windows)",
-        "download.githubMac": "GitHub (macOS)",
         "download.winTrust1": "Sentinel recovery included",
         "download.winTrust2": "Original proxy backup/restore",
         "download.winTrust3": "Smart reconnect with backoff",
@@ -244,7 +236,7 @@ export const translations = {
         "faq.q3.question": "Does it affect my internet speed?",
         "faq.q3.answer": "No. BypaxDPI operates locally and has zero impact on your internet latency. Your experience remains as fast as ever.",
         "faq.q4.question": "What platforms are supported?",
-        "faq.q4.answer": "BypaxDPI supports Windows 10/11 (built with Rust & Tauri) and macOS 13.0+ (built with Swift). Both platforms use the same DPI bypass technology.",
+        "faq.q4.answer": "BypaxDPI supports Windows 10/11 natively.",
         "faq.q5.question": "What is Local Network Share?",
         "faq.q5.answer": "Local Network Share lets you share the DPI bypass proxy with other devices on your local network. Run BypaxDPI on one computer, and other devices can connect through it.",
 
@@ -380,7 +372,7 @@ export const translations = {
         "proxy.description": "With BypaxDPI's Local Share feature, you can share the DPI bypass proxy across your entire local network. Set up the proxy on your phones, tablets, and other PCs to bypass DPI restrictions on all of them.",
         "proxy.chooseDeviceBadge": "Step 1",
         "proxy.chooseDeviceTitle": "Choose Your Device",
-        "proxy.chooseDeviceDesc": "First select which device you want to configure the proxy on. Then you'll see the setup video for that specific device.",
+        "proxy.chooseDeviceDesc": "Select the device you want to configure. We'll show you a step-by-step guide tailored specifically for that platform.",
         "proxy.openDeviceSelector": "Open device selection",
         "proxy.deviceModalTitle": "Select the device to configure proxy",
         "proxy.closeDeviceModal": "Close device selection",
@@ -413,7 +405,7 @@ export const translations = {
         "proxy.device.iosDesc": "WiFi proxy configuration",
         "proxy.device.windows": "Windows PC",
         "proxy.device.windowsDesc": "System proxy settings",
-        "proxy.device.mac": "macOS",
+
         "proxy.device.macDesc": "Network proxy preferences",
         "proxy.device.smarttv": "Smart TV",
         "proxy.device.smarttvDesc": "WiFi proxy settings",
@@ -444,6 +436,140 @@ export const translations = {
         "proxy.ctaDesc": "Download BypaxDPI and share DPI bypass with all your devices.",
         "proxy.ctaBtn": "Download BypaxDPI",
         "proxy.ctaLearnMore": "Learn More",
+
+        // Proxy Device Guides
+        "proxy.guideTitle": "Setup Guide: {device}",
+        "proxy.modePac": "Automatic (PAC)",
+        "proxy.modeManual": "Manual",
+        "proxy.modeRecommended": "Recommended",
+        "proxy.modeManualOnly": "This device only supports manual proxy configuration",
+        "proxy.pacWarning": "When BypaxDPI is closed, if you experience internet issues with YouTube etc. (due to cached settings), simply toggling your WiFi off and on will fix it.",
+        "proxy.manualWarning": "When BypaxDPI is closed, internet will be completely disconnected. To go back online, set your device's WiFi Proxy back to 'None'.",
+        "proxy.pacInfoTitle": "Copy this PAC URL from BypaxDPI",
+        "proxy.pacInfoDesc": "Open BypaxDPI → Click 'Connect Device' → Copy the PAC URL shown in the 'Automatic (PAC)' tab.",
+        "proxy.pacUrlLabel": "PAC URL",
+        "proxy.pacTipAlt": "Tip: You can also scan the QR code shown in BypaxDPI with your phone's camera to open the setup guide directly.",
+        "proxy.guideInfoTitle": "You'll need these values",
+        "proxy.guideInfoDesc": "Open BypaxDPI → Click 'Connect Device' → Switch to the 'Manual' tab to see the Host IP and Port values.",
+        "proxy.guideIPLabel": "IP Address",
+        "proxy.guidePortLabel": "Port",
+        "proxy.guidePacTip": "Tip: Use the 'Automatic (PAC)' mode instead — it's easier and allows quick WiFi toggle recovery if BypaxDPI is closed.",
+
+        // PAC Mode Guides
+        "proxy.pac.android.step1.title": "Open WiFi Settings",
+        "proxy.pac.android.step1.desc": "Go to Settings → WiFi. Long press (or tap the gear icon) on the WiFi network you're connected to.",
+        "proxy.pac.android.step2.title": "Set Proxy to Auto",
+        "proxy.pac.android.step2.desc": "Tap 'Modify network' → 'Advanced options'. Change Proxy from 'None' to 'Proxy Auto-Config'. Paste the PAC URL from BypaxDPI into the URL field.",
+        "proxy.pac.android.step3.title": "Save & Done!",
+        "proxy.pac.android.step3.desc": "Tap 'Save'. Your Android is now routed through BypaxDPI! If BypaxDPI closes, just toggle WiFi off/on to restore internet.",
+
+        "proxy.pac.ios.step1.title": "Open WiFi Settings",
+        "proxy.pac.ios.step1.desc": "Go to Settings → WiFi. Tap the blue (i) icon next to your connected WiFi network.",
+        "proxy.pac.ios.step2.title": "Set Proxy to Automatic",
+        "proxy.pac.ios.step2.desc": "Scroll down to 'HTTP Proxy' → tap 'Configure Proxy' → select 'Automatic'. Paste the PAC URL from BypaxDPI into the URL field.",
+        "proxy.pac.ios.step3.title": "Save & Done!",
+        "proxy.pac.ios.step3.desc": "Tap 'Save'. Your iPhone/iPad is now protected! If BypaxDPI closes, just toggle WiFi off/on.",
+
+        "proxy.pac.windows.step1.title": "Open Proxy Settings",
+        "proxy.pac.windows.step1.desc": "Press Win+I → Network & Internet → Proxy. Or search 'Proxy settings' in the Start menu.",
+        "proxy.pac.windows.step2.title": "Use Setup Script",
+        "proxy.pac.windows.step2.desc": "Under 'Automatic proxy setup', toggle on 'Use setup script'. Paste the PAC URL from BypaxDPI into the 'Script address' field.",
+        "proxy.pac.windows.step3.title": "Save & Done!",
+        "proxy.pac.windows.step3.desc": "Click 'Save'. Windows will now auto-route through BypaxDPI!",
+
+        "proxy.pac.mac.step1.title": "Open Network Settings",
+        "proxy.pac.mac.step1.desc": "Go to System Settings → Network. Click your active connection (WiFi or Ethernet).",
+        "proxy.pac.mac.step2.title": "Set Auto Proxy",
+        "proxy.pac.mac.step2.desc": "Click 'Details...' → 'Proxies' tab. Check 'Automatic Proxy Configuration'. Paste the PAC URL into the URL field.",
+        "proxy.pac.mac.step3.title": "Apply & Done!",
+        "proxy.pac.mac.step3.desc": "Click 'OK' → 'Apply'. Your Mac is now on BypaxDPI!",
+
+        "proxy.pac.linux.step1.title": "Set Environment Variable",
+        "proxy.pac.linux.step1.desc": "Some Linux browsers support PAC directly. For Chrome: launch with --proxy-pac-url=http://192.168.1.x:8787/proxy.pac flag.",
+        "proxy.pac.linux.step2.title": "GUI Method (GNOME)",
+        "proxy.pac.linux.step2.desc": "Settings → Network → Network Proxy → Automatic. Paste the PAC URL into the Configuration URL field.",
+        "proxy.pac.linux.step3.title": "Apply & Done!",
+        "proxy.pac.linux.step3.desc": "Close settings. Your browser will now auto-route through BypaxDPI!",
+
+        // Android Guide
+        "proxy.guide.android.step1.title": "Open WiFi Settings",
+        "proxy.guide.android.step1.desc": "Go to Settings → WiFi. Long press (or tap the gear icon) on the WiFi network you're connected to.",
+        "proxy.guide.android.step2.title": "Edit Network → Advanced",
+        "proxy.guide.android.step2.desc": "Tap 'Modify network' or 'Advanced options'. Find the 'Proxy' setting and change it from 'None' to 'Manual'.",
+        "proxy.guide.android.step3.title": "Enter Proxy Details",
+        "proxy.guide.android.step3.desc": "Set Proxy hostname to your computer's IP address (e.g. 192.168.1.x) and Port to 8080. Leave 'Bypass proxy for' empty.",
+        "proxy.guide.android.step4.title": "Save & Done!",
+        "proxy.guide.android.step4.desc": "Tap 'Save'. Your Android now routes traffic through BypaxDPI. DPI restrictions are bypassed! To undo: set proxy back to 'None'.",
+
+        // iOS Guide
+        "proxy.guide.ios.step1.title": "Open WiFi Settings",
+        "proxy.guide.ios.step1.desc": "Go to Settings → WiFi. Tap the blue (i) icon next to your connected WiFi network name.",
+        "proxy.guide.ios.step2.title": "Configure Proxy",
+        "proxy.guide.ios.step2.desc": "Scroll down to 'HTTP Proxy' section and tap 'Configure Proxy'. Select 'Manual'.",
+        "proxy.guide.ios.step3.title": "Enter Proxy Details",
+        "proxy.guide.ios.step3.desc": "Set Server to your computer's IP address (e.g. 192.168.1.x) and Port to 8080. Leave Authentication turned off.",
+        "proxy.guide.ios.step4.title": "Save & Done!",
+        "proxy.guide.ios.step4.desc": "Tap 'Save' in the top right corner. Your iPhone/iPad now bypasses DPI restrictions! To undo: set proxy back to 'Off'.",
+
+        // Windows Guide
+        "proxy.guide.windows.step1.title": "Open Proxy Settings",
+        "proxy.guide.windows.step1.desc": "Press Win+I to open Settings. Go to Network & Internet → Proxy. Or search 'Proxy settings' in the Start menu.",
+        "proxy.guide.windows.step2.title": "Manual Proxy Setup",
+        "proxy.guide.windows.step2.desc": "Under 'Manual proxy setup', click 'Set up' (or toggle on 'Use a proxy server'). Enter your BypaxDPI computer's IP and port 8080.",
+        "proxy.guide.windows.step3.title": "Enter Address & Port",
+        "proxy.guide.windows.step3.desc": "Set Address to your BypaxDPI computer's IP (e.g. 192.168.1.x) and Port to 8080. Check 'Don't use the proxy server for local addresses'.",
+        "proxy.guide.windows.step4.title": "Save & Done!",
+        "proxy.guide.windows.step4.desc": "Click 'Save'. This PC now routes traffic through BypaxDPI. To undo: toggle the proxy switch off.",
+
+        // macOS Guide
+        "proxy.guide.mac.step1.title": "Open Network Settings",
+        "proxy.guide.mac.step1.desc": "Go to System Settings → Network. Click on your active connection (WiFi or Ethernet).",
+        "proxy.guide.mac.step2.title": "Configure Proxies",
+        "proxy.guide.mac.step2.desc": "Click 'Details...' (or 'Advanced...' in older macOS). Go to the 'Proxies' tab. Check 'Web Proxy (HTTP)'.",
+        "proxy.guide.mac.step3.title": "Enter Proxy Details",
+        "proxy.guide.mac.step3.desc": "Set Server to your BypaxDPI computer's IP (e.g. 192.168.1.x) and Port to 8080. Also check 'Secure Web Proxy (HTTPS)' with the same values.",
+        "proxy.guide.mac.step4.title": "Apply & Done!",
+        "proxy.guide.mac.step4.desc": "Click 'OK' then 'Apply'. Your Mac now bypasses DPI restrictions! To undo: uncheck the proxy options.",
+
+        // PlayStation Guide
+        "proxy.guide.ps.step1.title": "Open Network Settings",
+        "proxy.guide.ps.step1.desc": "Go to Settings → Network → Set Up Internet Connection. Select your WiFi or LAN connection.",
+        "proxy.guide.ps.step2.title": "Custom Setup",
+        "proxy.guide.ps.step2.desc": "Choose 'Custom' setup (not Easy). For IP Address, DNS, and MTU keep the defaults (Automatic/Do Not Specify).",
+        "proxy.guide.ps.step3.title": "Set Proxy Server",
+        "proxy.guide.ps.step3.desc": "When you reach 'Proxy Server', select 'Use'. Enter your BypaxDPI computer's IP address and port 8080.",
+        "proxy.guide.ps.step4.title": "Test Connection",
+        "proxy.guide.ps.step4.desc": "Complete the setup and run 'Test Internet Connection'. If it succeeds, you're all set! DPI bypass is now active on your PlayStation.",
+
+        // Xbox Guide
+        "proxy.guide.xbox.step1.title": "Open Network Settings",
+        "proxy.guide.xbox.step1.desc": "Press the Xbox button → Profile & system → Settings → General → Network settings.",
+        "proxy.guide.xbox.step2.title": "Advanced Settings",
+        "proxy.guide.xbox.step2.desc": "Select 'Advanced settings'. Note: Xbox has limited proxy support. You may need to configure at router level instead.",
+        "proxy.guide.xbox.step3.title": "Alternative: Router Setup",
+        "proxy.guide.xbox.step3.desc": "For best results, configure the proxy at your router level, or use your computer as a network gateway. See BypaxDPI docs for details.",
+        "proxy.guide.xbox.step4.title": "Test Connection",
+        "proxy.guide.xbox.step4.desc": "Run 'Test network connection' in Xbox settings. If successful, your Xbox traffic now goes through BypaxDPI's proxy.",
+
+        // Smart TV Guide
+        "proxy.guide.smarttv.step1.title": "Open Network Settings",
+        "proxy.guide.smarttv.step1.desc": "Go to your Smart TV's Settings → Network (or General → Network). Find your WiFi connection settings.",
+        "proxy.guide.smarttv.step2.title": "Find Proxy Settings",
+        "proxy.guide.smarttv.step2.desc": "Look for 'Proxy' or 'HTTP Proxy' option. On Samsung: Network → Network Status → IP Settings. On LG: Network → WiFi → Advanced.",
+        "proxy.guide.smarttv.step3.title": "Enter Proxy Details",
+        "proxy.guide.smarttv.step3.desc": "Set the proxy server to your BypaxDPI computer's IP (e.g. 192.168.1.x) and port to 8080.",
+        "proxy.guide.smarttv.step4.title": "Save & Done!",
+        "proxy.guide.smarttv.step4.desc": "Save the settings. If your TV doesn't support proxy settings directly, you can configure it at the router level instead.",
+
+        // Linux Guide
+        "proxy.guide.linux.step1.title": "Terminal Method (Recommended)",
+        "proxy.guide.linux.step1.desc": "Open a terminal and set environment variables:\nexport http_proxy=http://192.168.1.x:8080\nexport https_proxy=http://192.168.1.x:8080",
+        "proxy.guide.linux.step2.title": "GUI Method (GNOME/KDE)",
+        "proxy.guide.linux.step2.desc": "GNOME: Settings → Network → Network Proxy → Manual. KDE: System Settings → Network → Proxy → Manual. Enter IP and port.",
+        "proxy.guide.linux.step3.title": "Make It Persistent (Optional)",
+        "proxy.guide.linux.step3.desc": "Add the export commands to your ~/.bashrc or ~/.profile file to apply on every terminal session.",
+        "proxy.guide.linux.step4.title": "Verify & Done!",
+        "proxy.guide.linux.step4.desc": "Run 'curl -I https://discord.com' to verify. If you get a response, DPI bypass is working! To undo: unset the proxy variables.",
 
         // Legal General
         "legal.backHome": "Back to Home",
@@ -488,7 +614,7 @@ export const translations = {
     },
     tr: {
         // Meta
-        "meta.title": "BypaxDPI - Windows & macOS için DPI Bypass Aracı",
+        "meta.title": "BypaxDPI - Windows için DPI Bypass Aracı",
 
         // Navigation
         "nav.features": "Özellikler",
@@ -518,9 +644,9 @@ export const translations = {
         "hero.float3": "1-Tık Kurulum",
 
         // Platform Section
-        "platform.badge": "Çapraz Platform",
-        "platform.title": "Her Platformda Native",
-        "platform.description": "Her işletim sistemi için sıfırdan inşa edildi. Aynı güçlü DPI bypass, farklı native teknolojiler.",
+        "platform.badge": "Native Performans",
+        "platform.title": "Windows'ta Işık Hızında",
+        "platform.description": "Windows için sıfırdan inşa edildi. Aynı güçlü DPI bypass, son derece hafif ve native bir uygulamada sunuluyor.",
         "platform.windows.title": "Windows için BypaxDPI",
         "platform.windows.subtitle": "Rust & Tauri ile geliştirildi",
         "platform.windows.desc": "Rust ve Tauri framework ile geliştirilen son derece hızlı native Windows uygulaması. Minimum kaynak kullanımı, maksimum performans.",
@@ -528,15 +654,9 @@ export const translations = {
         "platform.windows.feat2": "Sistem tepsisi entegrasyonu",
         "platform.windows.feat3": "Windows ile otomatik başlatma",
         "platform.windows.feat4": "Fluent Design arayüzü",
-        "platform.macos.title": "macOS için BypaxDPI",
-        "platform.macos.subtitle": "Swift & SwiftUI ile geliştirildi",
-        "platform.macos.desc": "Swift ile geliştirilen güzel native macOS uygulaması. Mac deneyiminizle sorunsuz bütünleşir.",
-        "platform.macos.feat1": "Menü çubuğu entegrasyonu",
-        "platform.macos.feat2": "Native SwiftUI arayüzü",
-        "platform.macos.feat3": "Homebrew desteği",
-        "platform.macos.feat4": "macOS 13.0+ optimizeli",
-        "platform.sameDPI": "Aynı DPI Bypass Motoru",
-        "platform.sameDPIDesc": "Her iki platform da aynı kanıtlanmış SpoofDPI teknolojisini kullanarak Derin Paket İnceleme kısıtlamalarını aşar.",
+
+        "platform.sameDPI": "Kanıtlanmış Teknoloji",
+        "platform.sameDPIDesc": "BypaxDPI, Derin Paket İnceleme kısıtlamalarını aşmak için kanıtlanmış SpoofDPI teknolojisini kullanır.",
 
         // Local Network Share Section
         "localshare.badge": "Tüm Ev Özgürlüğü",
@@ -594,7 +714,7 @@ export const translations = {
         "how.title": "Basit. Şık. Etkili.",
         "how.description": "Kolaylaştırılmış sürecimizle dakikalar içinde başlayın.",
         "how.step1.title": "İndir & Kur",
-        "how.step1.description": "GitHub üzerinden BypaxDPI'ı indirin. Windows veya macOS cihazınıza kurun.",
+        "how.step1.description": "GitHub üzerinden BypaxDPI'ı indirin. Windows cihazınıza kurun.",
         "how.step2.title": "Bağlan",
         "how.step2.description": "BypaxDPI'ı açın ve bağlan butonuna basın. DPI bypass motoru anında başlar.",
         "how.step3.title": "Özgürsünüz",
@@ -657,10 +777,8 @@ export const translations = {
         "download.buttonWin": "Windows için İndir",
         "download.buttonWinExe": "Windows EXE",
         "download.buttonWinMsi": "Windows MSI",
-        "download.buttonMac": "macOS için İndir",
         "download.github": "GitHub'da Görüntüle",
         "download.githubWin": "GitHub (Windows)",
-        "download.githubMac": "GitHub (macOS)",
         "download.winTrust1": "Sentinel toparlanma dahili",
         "download.winTrust2": "Orijinal proxy yedekleme/geri yükleme",
         "download.winTrust3": "Akıllı yeniden bağlanma (backoff)",
@@ -731,7 +849,7 @@ export const translations = {
         "faq.q3.question": "İnternet hızımı etkiler mi?",
         "faq.q3.answer": "Hayır. BypaxDPI yerel olarak çalışır ve internet gecikmeniz üzerinde sıfır etkisi vardır. Deneyiminiz her zamanki gibi hızlı kalır.",
         "faq.q4.question": "Hangi platformlar destekleniyor?",
-        "faq.q4.answer": "BypaxDPI Windows 10/11 (Rust & Tauri ile geliştirildi) ve macOS 13.0+ (Swift ile geliştirildi) destekler. Her iki platform da aynı DPI bypass teknolojisini kullanır.",
+        "faq.q4.answer": "BypaxDPI native olarak Windows 10/11'i destekler.",
         "faq.q5.question": "Yerel Ağ Paylaşımı nedir?",
         "faq.q5.answer": "Yerel Ağ Paylaşımı, DPI bypass proxy'sini yerel ağınızdaki diğer cihazlarla paylaşmanızı sağlar. Bir bilgisayarda BypaxDPI çalıştırın, diğer cihazlar onun üzerinden bağlansın.",
 
@@ -867,7 +985,7 @@ export const translations = {
         "proxy.description": "BypaxDPI'ın Yerel Paylaşım özelliği sayesinde DPI bypass proxy'sini tüm yerel ağınızda paylaşabilirsiniz. Telefonlarınızda, tabletlerinizde ve diğer PC'lerinizde proxy ayarlayarak hepsinde DPI kısıtlamalarını aşın.",
         "proxy.chooseDeviceBadge": "1. Adım",
         "proxy.chooseDeviceTitle": "Cihazınızı Seçin",
-        "proxy.chooseDeviceDesc": "Önce proxy ayarlamak istediğiniz cihazı seçeceksiniz. Sonra sadece o cihaza özel kurulum videosu gösterilecek.",
+        "proxy.chooseDeviceDesc": "Proxy ayarlamak istediğiniz cihazı seçin. O platforma özel adım adım kurulum rehberi gösterilecek.",
         "proxy.openDeviceSelector": "Cihaz seçimini aç",
         "proxy.deviceModalTitle": "Proxy ayarlanacak cihazı seçin",
         "proxy.closeDeviceModal": "Cihaz seçimini kapat",
@@ -900,7 +1018,7 @@ export const translations = {
         "proxy.device.iosDesc": "WiFi proxy yapılandırması",
         "proxy.device.windows": "Windows PC",
         "proxy.device.windowsDesc": "Sistem proxy ayarları",
-        "proxy.device.mac": "macOS",
+
         "proxy.device.macDesc": "Ağ proxy tercihleri",
         "proxy.device.smarttv": "Akıllı TV",
         "proxy.device.smarttvDesc": "WiFi proxy ayarları",
@@ -931,6 +1049,140 @@ export const translations = {
         "proxy.ctaDesc": "BypaxDPI'ı indirin ve DPI bypass'ı tüm cihazlarınızla paylaşın.",
         "proxy.ctaBtn": "BypaxDPI'ı İndir",
         "proxy.ctaLearnMore": "Daha Fazla Bilgi",
+
+        // Proxy Cihaz Rehberleri
+        "proxy.guideTitle": "Kurulum Rehberi: {device}",
+        "proxy.modePac": "Otomatik (PAC)",
+        "proxy.modeManual": "Manuel",
+        "proxy.modeRecommended": "Önerilen",
+        "proxy.modeManualOnly": "Bu cihaz sadece manuel proxy ayarını destekler",
+        "proxy.pacWarning": "Bypax kapatıldıktan sonra YouTube vb. uygulamalarda internet sorunu yaşarsanız (eski önbellek nedeniyle), Wi-Fi bağlantısını kapatıp açmanız yeterlidir.",
+        "proxy.manualWarning": "Bypax kapatıldığında internet bağlantısı tamamen kesilir. İnternete tekrar girmek için cihazınızın Wi-Fi ayarlarından Proxy'i eski haline (Yok) getirmelisiniz.",
+        "proxy.pacInfoTitle": "BypaxDPI'dan bu PAC URL'sini kopyalayın",
+        "proxy.pacInfoDesc": "BypaxDPI uygulamasını açın → 'Cihaz Bağlama' butonuna tıklayın → 'Otomatik (PAC)' sekmesindeki PAC URL'sini kopyalayın.",
+        "proxy.pacUrlLabel": "OTOMATİK URL",
+        "proxy.pacTipAlt": "İpucu: Kameralı cihazınız varsa, doğrudan BypaxDPI üzerindeki QR kodu okutarak da hızlı kurulum yapabilirsiniz.",
+        "proxy.guideInfoTitle": "Bu bilgilere ihtiyacınız olacak",
+        "proxy.guideInfoDesc": "BypaxDPI uygulamasını açın → 'Cihaz Bağlama' butonuna tıklayın → 'Manuel' sekmesindeki IP Adresi ve Port bilgilerini kopyalayın.",
+        "proxy.guideIPLabel": "SUNUCU (HOST)",
+        "proxy.guidePortLabel": "PORT",
+        "proxy.guidePacTip": "İpucu: Bunun yerine 'Otomatik (PAC)' yöntemini kullanın — hem daha kolaydır hem de BypaxDPI kapandığında sadece Wi-Fi kapa/aç yaparak interneti geri getirir.",
+
+        // PAC Modu Rehberleri
+        "proxy.pac.android.step1.title": "WiFi Ayarlarına Gidin",
+        "proxy.pac.android.step1.desc": "Ayarlar → WiFi'ye girin. Bağlı olduğunuz WiFi ağına uzun basın (veya ağın yanındaki ok/dişli simgesine dokunun).",
+        "proxy.pac.android.step2.title": "Proxy'yi Otomatik Yapın",
+        "proxy.pac.android.step2.desc": "'Ağı düzenle' veya 'Gelişmiş seçenekler'e girin. Proxy ayarını 'Otomatik' veya 'Proxy Otomatik Yapılandırma' olarak değiştirin. PAC URL adresini URL kısmına yapıştırın.",
+        "proxy.pac.android.step3.title": "Kaydet ve Bitti!",
+        "proxy.pac.android.step3.desc": "'Kaydet'e dokunun. BypaxDPI kapandığında internet giderse, sadece WiFi'yi kapatıp açın (otomatik eski haline döner).",
+
+        "proxy.pac.ios.step1.title": "WiFi Ayarlarına Gidin",
+        "proxy.pac.ios.step1.desc": "Ayarlar → WiFi'ye girin. Bağlı olduğunuz ağın sağındaki mavi (i) simgesine dokunun.",
+        "proxy.pac.ios.step2.title": "Proxy'yi Otomatik Yapın",
+        "proxy.pac.ios.step2.desc": "En alta inip 'Proxy'yi Ayarla'ya (HTTP Proxy) dokunun. 'Otomatik' seçeneğini seçin. BypaxDPI'daki PAC URL'yi 'URL' kısmına yapıştırın.",
+        "proxy.pac.ios.step3.title": "Kaydet ve Bitti!",
+        "proxy.pac.ios.step3.desc": "Sağ üstten 'Kaydet'e dokunun. BypaxDPI kapandığında internet giderse, WiFi'yi kapatıp açmanız yeterlidir.",
+
+        "proxy.pac.windows.step1.title": "Proxy Ayarlarını Açın",
+        "proxy.pac.windows.step1.desc": "Başlat menüsüne tıklayıp klavyeden 'Proxy' yazın ve 'Proxy ayarları'nı açın.",
+        "proxy.pac.windows.step2.title": "Kurulum Komut Dosyasını Kullanın",
+        "proxy.pac.windows.step2.desc": "'Otomatik proxy kurulumu' altındaki 'Kurulum komut dosyasını kullan' butonunu açık konuma getirin (Ayarla'ya tıklayın). PAC URL adresini yapıştırın.",
+        "proxy.pac.windows.step3.title": "Kaydet ve Bitti!",
+        "proxy.pac.windows.step3.desc": "'Kaydet'e tıklayın. Artık hazırsınız!",
+
+        "proxy.pac.mac.step1.title": "Ağ Ayarlarını Açın",
+        "proxy.pac.mac.step1.desc": "Sistem Ayarları → Ağ menüsüne gidin. Aktif olan bağlantınıza (Wi-Fi vb.) tıklayın.",
+        "proxy.pac.mac.step2.title": "Proxy'yi Otomatik Yapın",
+        "proxy.pac.mac.step2.desc": "'Ayrıntılar...' butonuna tıklayıp 'Proxy'ler' sekmesine geçin. 'Otomatik Proxy Yapılandırması'nı (PAC) açın ve URL'yi yapıştırın.",
+        "proxy.pac.mac.step3.title": "Tamam ve Bitti!",
+        "proxy.pac.mac.step3.desc": "'Tamam' veya 'Uygula' diyerek kaydedin.",
+
+        "proxy.pac.linux.step1.title": "Ortam Değişkeni (Terminal)",
+        "proxy.pac.linux.step1.desc": "Bazı tarayıcılar (örneğin Chrome) PAC URL'sini parametre olarak destekler. Chrome'u --proxy-pac-url=http://192.168.1.11... komutuyla başlatabilirsiniz.",
+        "proxy.pac.linux.step2.title": "Arayüz Yöntemi (GNOME vb.)",
+        "proxy.pac.linux.step2.desc": "Sistem Ayarları → Ağ → Ağ Proxy'si menüsüne gidin. Modu 'Otomatik' olarak seçin ve Yapılandırma URL'si alanına BypaxDPI kopyanızı yapıştırın.",
+        "proxy.pac.linux.step3.title": "Kaydet ve Bitti!",
+        "proxy.pac.linux.step3.desc": "Ayarları kapatın, ağınız otomatik yapılandırılacaktır.",
+
+        // Android Rehberi
+        "proxy.guide.android.step1.title": "WiFi Ayarlarını Açın",
+        "proxy.guide.android.step1.desc": "Ayarlar → WiFi'ye gidin. Bağlı olduğunuz WiFi ağına uzun basın (veya dişli simgesine dokunun).",
+        "proxy.guide.android.step2.title": "Ağı Düzenle → Gelişmiş",
+        "proxy.guide.android.step2.desc": "'Ağı düzenle' veya 'Gelişmiş seçenekler'e dokunun. 'Proxy' ayarını bulun ve 'Yok'tan 'Manuel'e değiştirin.",
+        "proxy.guide.android.step3.title": "Proxy Bilgilerini Girin",
+        "proxy.guide.android.step3.desc": "Proxy ana makine adını bilgisayarınızın IP adresine (örn. 192.168.1.x), Portu 8080'e ayarlayın. 'Proxy'yi atla' kısmını boş bırakın.",
+        "proxy.guide.android.step4.title": "Kaydet ve Tamam!",
+        "proxy.guide.android.step4.desc": "'Kaydet'e dokunun. Android'iniz artık trafiği BypaxDPI üzerinden yönlendirir. DPI kısıtlamaları aşıldı! Geri almak için: proxy'yi 'Yok'a çevirin.",
+
+        // iOS Rehberi
+        "proxy.guide.ios.step1.title": "WiFi Ayarlarını Açın",
+        "proxy.guide.ios.step1.desc": "Ayarlar → WiFi'ye gidin. Bağlı WiFi ağ adının yanındaki mavi (i) simgesine dokunun.",
+        "proxy.guide.ios.step2.title": "Proxy'yi Yapılandır",
+        "proxy.guide.ios.step2.desc": "Aşağı kaydırarak 'HTTP Proxy' bölümünü bulun ve 'Proxy Yapılandır'a dokunun. 'Manuel' seçeneğini seçin.",
+        "proxy.guide.ios.step3.title": "Proxy Bilgilerini Girin",
+        "proxy.guide.ios.step3.desc": "Sunucu kısmına bilgisayarınızın IP adresini (örn. 192.168.1.x), Port kısmına 8080 yazın. Kimlik Doğrulama'yı kapalı bırakın.",
+        "proxy.guide.ios.step4.title": "Kaydet ve Tamam!",
+        "proxy.guide.ios.step4.desc": "Sağ üst köşedeki 'Kaydet'e dokunun. iPhone/iPad'iniz artık DPI kısıtlamalarını aşıyor! Geri almak için: proxy'yi 'Kapalı'ya çevirin.",
+
+        // Windows Rehberi
+        "proxy.guide.windows.step1.title": "Proxy Ayarlarını Açın",
+        "proxy.guide.windows.step1.desc": "Win+I tuşlarına basarak Ayarlar'ı açın. Ağ ve İnternet → Proxy'ye gidin. Veya Başlat menüsünde 'Proxy ayarları' arayın.",
+        "proxy.guide.windows.step2.title": "Manuel Proxy Kurulumu",
+        "proxy.guide.windows.step2.desc": "'El ile proxy kurulumu' altında 'Ayarla'ya tıklayın (veya 'Proxy sunucusu kullan'ı açın). BypaxDPI bilgisayarınızın IP ve 8080 portunu girin.",
+        "proxy.guide.windows.step3.title": "Adres ve Port Girin",
+        "proxy.guide.windows.step3.desc": "Adres kısmına BypaxDPI bilgisayarınızın IP'sini (örn. 192.168.1.x), Port kısmına 8080 yazın. 'Yerel adresler için proxy kullanma' seçeneğini işaretleyin.",
+        "proxy.guide.windows.step4.title": "Kaydet ve Tamam!",
+        "proxy.guide.windows.step4.desc": "'Kaydet'e tıklayın. Bu PC artık trafiği BypaxDPI üzerinden yönlendirir. Geri almak için: proxy anahtarını kapatın.",
+
+        // macOS Rehberi
+        "proxy.guide.mac.step1.title": "Ağ Ayarlarını Açın",
+        "proxy.guide.mac.step1.desc": "Sistem Ayarları → Ağ'a gidin. Aktif bağlantınıza (WiFi veya Ethernet) tıklayın.",
+        "proxy.guide.mac.step2.title": "Proxy'leri Yapılandırın",
+        "proxy.guide.mac.step2.desc": "'Ayrıntılar...' (veya eski macOS'ta 'Gelişmiş...') düğmesine tıklayın. 'Proxy'ler' sekmesine gidin. 'Web Proxy (HTTP)' kutusunu işaretleyin.",
+        "proxy.guide.mac.step3.title": "Proxy Bilgilerini Girin",
+        "proxy.guide.mac.step3.desc": "Sunucu kısmına BypaxDPI bilgisayarınızın IP'sini (örn. 192.168.1.x), Port kısmına 8080 yazın. 'Güvenli Web Proxy (HTTPS)' kutusunu da aynı değerlerle işaretleyin.",
+        "proxy.guide.mac.step4.title": "Uygula ve Tamam!",
+        "proxy.guide.mac.step4.desc": "'Tamam' ardından 'Uygula'ya tıklayın. Mac'iniz artık DPI kısıtlamalarını aşıyor! Geri almak için: proxy seçeneklerinin işaretini kaldırın.",
+
+        // PlayStation Rehberi
+        "proxy.guide.ps.step1.title": "Ağ Ayarlarını Açın",
+        "proxy.guide.ps.step1.desc": "Ayarlar → Ağ → İnternet Bağlantısı Kur'a gidin. WiFi veya LAN bağlantınızı seçin.",
+        "proxy.guide.ps.step2.title": "Özel Kurulum",
+        "proxy.guide.ps.step2.desc": "'Özel' kurulumu seçin (Kolay değil). IP Adresi, DNS ve MTU için varsayılanları koruyun (Otomatik/Belirtme).",
+        "proxy.guide.ps.step3.title": "Proxy Sunucusunu Ayarlayın",
+        "proxy.guide.ps.step3.desc": "'Proxy Sunucusu' adımına geldiğinizde 'Kullan' seçeneğini seçin. BypaxDPI bilgisayarınızın IP adresini ve 8080 portunu girin.",
+        "proxy.guide.ps.step4.title": "Bağlantıyı Test Edin",
+        "proxy.guide.ps.step4.desc": "Kurulumu tamamlayın ve 'İnternet Bağlantısını Test Et'i çalıştırın. Başarılı olursa hazırsınız! PlayStation'ınızda DPI bypass artık aktif.",
+
+        // Xbox Rehberi
+        "proxy.guide.xbox.step1.title": "Ağ Ayarlarını Açın",
+        "proxy.guide.xbox.step1.desc": "Xbox düğmesine basın → Profil ve sistem → Ayarlar → Genel → Ağ ayarları.",
+        "proxy.guide.xbox.step2.title": "Gelişmiş Ayarlar",
+        "proxy.guide.xbox.step2.desc": "'Gelişmiş ayarlar'ı seçin. Not: Xbox'ın proxy desteği sınırlıdır. Bunun yerine yönlendirici düzeyinde yapılandırmanız gerekebilir.",
+        "proxy.guide.xbox.step3.title": "Alternatif: Yönlendirici Kurulumu",
+        "proxy.guide.xbox.step3.desc": "En iyi sonuç için proxy'yi yönlendirici düzeyinde yapılandırın veya bilgisayarınızı ağ geçidi olarak kullanın. Detaylar için BypaxDPI belgelerine bakın.",
+        "proxy.guide.xbox.step4.title": "Bağlantıyı Test Edin",
+        "proxy.guide.xbox.step4.desc": "Xbox ayarlarında 'Ağ bağlantısını test et'i çalıştırın. Başarılı olursa Xbox trafiğiniz artık BypaxDPI proxy'si üzerinden geçiyor.",
+
+        // Akıllı TV Rehberi
+        "proxy.guide.smarttv.step1.title": "Ağ Ayarlarını Açın",
+        "proxy.guide.smarttv.step1.desc": "Akıllı TV'nizin Ayarlar → Ağ (veya Genel → Ağ) bölümüne gidin. WiFi bağlantı ayarlarınızı bulun.",
+        "proxy.guide.smarttv.step2.title": "Proxy Ayarlarını Bulun",
+        "proxy.guide.smarttv.step2.desc": "'Proxy' veya 'HTTP Proxy' seçeneğini arayın. Samsung: Ağ → Ağ Durumu → IP Ayarları. LG: Ağ → WiFi → Gelişmiş.",
+        "proxy.guide.smarttv.step3.title": "Proxy Bilgilerini Girin",
+        "proxy.guide.smarttv.step3.desc": "Proxy sunucusunu BypaxDPI bilgisayarınızın IP'sine (örn. 192.168.1.x), portu 8080'e ayarlayın.",
+        "proxy.guide.smarttv.step4.title": "Kaydet ve Tamam!",
+        "proxy.guide.smarttv.step4.desc": "Ayarları kaydedin. TV'niz doğrudan proxy ayarlarını desteklemiyorsa, bunun yerine yönlendirici düzeyinde yapılandırabilirsiniz.",
+
+        // Linux Rehberi
+        "proxy.guide.linux.step1.title": "Terminal Yöntemi (Önerilen)",
+        "proxy.guide.linux.step1.desc": "Terminal açın ve ortam değişkenlerini ayarlayın:\nexport http_proxy=http://192.168.1.x:8080\nexport https_proxy=http://192.168.1.x:8080",
+        "proxy.guide.linux.step2.title": "GUI Yöntemi (GNOME/KDE)",
+        "proxy.guide.linux.step2.desc": "GNOME: Ayarlar → Ağ → Ağ Proxy → Manuel. KDE: Sistem Ayarları → Ağ → Proxy → Manuel. IP ve portu girin.",
+        "proxy.guide.linux.step3.title": "Kalıcı Yapın (İsteğe Bağlı)",
+        "proxy.guide.linux.step3.desc": "Her terminal oturumunda uygulanması için export komutlarını ~/.bashrc veya ~/.profile dosyanıza ekleyin.",
+        "proxy.guide.linux.step4.title": "Doğrulayın ve Tamam!",
+        "proxy.guide.linux.step4.desc": "Doğrulamak için 'curl -I https://discord.com' komutunu çalıştırın. Yanıt alırsanız DPI bypass çalışıyor! Geri almak için: proxy değişkenlerini kaldırın.",
 
         // Legal General
         "legal.backHome": "Ana Sayfaya Dön",

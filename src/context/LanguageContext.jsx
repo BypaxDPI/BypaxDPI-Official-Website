@@ -19,14 +19,8 @@ export const LanguageProvider = ({ children }) => {
             setCurrentLang(translations[langCode] ? langCode : 'en');
         }
 
-        // Detect OS
-        const platform = navigator.platform.toLowerCase();
-        const userAgent = navigator.userAgent.toLowerCase();
-        if (platform.includes('mac') || userAgent.includes('macintosh')) {
-            setOS('macOS');
-        } else {
-            setOS('Windows');
-        }
+        // BypaxDPI is Windows only
+        setOS('Windows');
     }, []);
 
     // Update document lang attribute
