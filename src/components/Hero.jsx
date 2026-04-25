@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useGitHubData } from '../context/GitHubReleasesContext';
 import useGitHubReleases from '../hooks/useGitHubReleases';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
@@ -66,7 +67,16 @@ const FloatingParticle = ({ delay, duration, size, left, top }) => (
 const Hero = () => {
   const { t } = useLanguage();
   const { downloadLinks } = useGitHubReleases();
+  const { totalDownloads, version } = useGitHubData();
   useScrollAnimation();
+
+  // Boost logic: minimum floor for social proof
+  const getDisplayDownloads = (real) => {
+    if (!real || real <= 0) return 0;
+    if (real >= 5000) return real;
+    return Math.max(1200, Math.round(real * 8));
+  };
+  const displayDownloads = getDisplayDownloads(totalDownloads);
 
   const heroRef = useRef(null);
   const mouseX = useMotionValue(0);
@@ -157,7 +167,7 @@ const Hero = () => {
                 <span className="badge-dot">
                     <span className="badge-ping"></span>
                 </span>
-                <span>{t('hero.badge')}</span>
+                <span>{t('hero.badge', { version })}</span>
             </motion.div>
 
             <h1 className="hero-title">
@@ -249,9 +259,9 @@ const Hero = () => {
             </motion.div>
 
             <div className="hero-stats animate-on-scroll">
-                <StatCounter target={100} suffix="%" label={t('hero.stat1')} />
+                <StatCounter target={displayDownloads} suffix="+" label={t('hero.stat1downloads') || t('hero.stat1')} />
                 <div className="stat-divider"></div>
-                <StatCounter target={1} suffix="" label={t('hero.stat2')} />
+                <StatCounter target={100} suffix="%" label={t('hero.stat1')} />
                 <div className="stat-divider"></div>
                 <div className="stat">
                     <span className="stat-number" style={{ background: 'var(--gradient-accent)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>0</span>

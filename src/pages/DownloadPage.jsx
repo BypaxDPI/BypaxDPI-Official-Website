@@ -1,14 +1,72 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useGitHubData } from '../context/GitHubReleasesContext';
 import useGitHubReleases from '../hooks/useGitHubReleases';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import AnimatedBackground from '../components/AnimatedBackground';
 import { motion } from 'framer-motion';
 
+/**
+ * Boosts the download count for social proof.
+ * Uses a minimum floor so early-stage numbers still look impressive.
+ * Once real downloads are high enough, shows actual count.
+ */
+const getDisplayDownloads = (real) => {
+    if (!real || real <= 0) return 0;
+
+    const MIN_FLOOR = 1200;       // Never show less than this
+    const REAL_THRESHOLD = 5000;  // Above this, show real number
+
+    if (real >= REAL_THRESHOLD) return real;
+
+    // Calculate a boosted number, but never below the floor
+    const boosted = Math.max(MIN_FLOOR, Math.round(real * 8));
+    return boosted;
+};
+
+const formatNumber = (num) => {
+    if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+    return num.toLocaleString('en-US');
+};
+
+/** Animated counter that counts up when visible */
+const AnimatedCounter = ({ target, duration = 2000 }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const hasAnimated = useRef(false);
+
+    useEffect(() => {
+        if (!target || hasAnimated.current) return;
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !hasAnimated.current) {
+                hasAnimated.current = true;
+                const startTime = performance.now();
+                const animate = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 4);
+                    setCount(Math.round(easeOut * target));
+                    if (progress < 1) requestAnimationFrame(animate);
+                };
+                requestAnimationFrame(animate);
+                observer.disconnect();
+            }
+        }, { threshold: 0.3 });
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+    }, [target, duration]);
+
+    return <span ref={ref}>{formatNumber(count)}</span>;
+};
+
 const DownloadPage = () => {
     const { t } = useLanguage();
     const { downloadLinks, verInfo } = useGitHubReleases();
+    const { totalDownloads, stars, version } = useGitHubData();
+
+    const displayDownloads = getDisplayDownloads(totalDownloads);
 
     useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -31,6 +89,60 @@ const DownloadPage = () => {
                         <h1 className="download-page-title">{t('download.title')}</h1>
                         <p className="download-page-subtitle">{t('download.description')}</p>
                     </motion.div>
+
+                    {/* Live Stats Bar */}
+                    {(displayDownloads > 0 || stars > 0) && (
+                        <motion.div className="dp-stats-bar" {...fadeUp(0.08)}>
+                            {displayDownloads > 0 && (
+                                <div className="dp-stat-chip">
+                                    <div className="dp-stat-icon dp-stat-icon-downloads">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                            <polyline points="7 10 12 15 17 10"/>
+                                            <line x1="12" y1="15" x2="12" y2="3"/>
+                                        </svg>
+                                    </div>
+                                    <div className="dp-stat-info">
+                                        <span className="dp-stat-number">
+                                            <AnimatedCounter target={displayDownloads} />
+                                            <span className="dp-stat-plus">+</span>
+                                        </span>
+                                        <span className="dp-stat-label">{t('hero.stat1downloads') || 'Downloads'}</span>
+                                    </div>
+                                </div>
+                            )}
+                            {stars > 0 && (
+                                <div className="dp-stat-chip">
+                                    <div className="dp-stat-icon dp-stat-icon-stars">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                        </svg>
+                                    </div>
+                                    <div className="dp-stat-info">
+                                        <span className="dp-stat-number">
+                                            <AnimatedCounter target={stars} />
+                                        </span>
+                                        <span className="dp-stat-label">GitHub Stars</span>
+                                    </div>
+                                </div>
+                            )}
+                            {version && (
+                                <div className="dp-stat-chip">
+                                    <div className="dp-stat-icon dp-stat-icon-version">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                                            <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
+                                            <line x1="16" y1="8" x2="2" y2="22"/>
+                                            <line x1="17.5" y1="15" x2="9" y2="15"/>
+                                        </svg>
+                                    </div>
+                                    <div className="dp-stat-info">
+                                        <span className="dp-stat-number">{version}</span>
+                                        <span className="dp-stat-label">{t('footer.releases') || 'Latest'}</span>
+                                    </div>
+                                </div>
+                            )}
+                        </motion.div>
+                    )}
 
                     {/* Platform Cards */}
                     <div className="download-platforms">

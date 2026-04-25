@@ -102,7 +102,7 @@ const Navbar = () => {
     const el = document.querySelector(targetId);
     if (el) {
       setMenuOpen(false);
-      const navH = document.getElementById('navbar').offsetHeight;
+      const navH = document.getElementById('navbar')?.offsetHeight || 80;
       window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - navH, behavior: 'smooth' });
     }
   };

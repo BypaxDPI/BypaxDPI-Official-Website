@@ -5,7 +5,6 @@ const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
     const [currentLang, setCurrentLang] = useState('en');
-    const [version, setVersion] = useState('v1.0.0');
     const [os, setOS] = useState('Windows');
 
     // Detect language on mount
@@ -46,9 +45,6 @@ export const LanguageProvider = ({ children }) => {
         
         // Handle placeholders
         if (typeof translation === 'string') {
-            if (translation.includes('{version}')) {
-                translation = translation.replace('{version}', version);
-            }
             if (translation.includes('{os}')) {
                 translation = translation.replace('{os}', os);
             }
@@ -67,8 +63,6 @@ export const LanguageProvider = ({ children }) => {
             currentLang, 
             toggleLanguage, 
             t, 
-            setVersion, 
-            version, 
             os, 
             setOS 
         }}>

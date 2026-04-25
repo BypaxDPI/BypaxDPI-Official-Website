@@ -88,7 +88,7 @@ const Footer = () => {
                 </div>
 
                 <div className="footer-bottom">
-                    <p>{t('footer.copyright')}</p>
+                    <p>{t('footer.copyright').replace(/\d{4}/, new Date().getFullYear())}</p>
                     <p>{t('footer.madeWith')}</p>
                 </div>
             </div>

@@ -13,8 +13,8 @@ import './App.css';
 function App() {
   return (
     <>
-        <ScrollProgress />
         <Router>
+          <ScrollProgress />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/download" element={<DownloadPage />} />
